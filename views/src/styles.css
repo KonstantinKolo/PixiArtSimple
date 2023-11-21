@@ -1,0 +1,36 @@
+body{
+  background-color: darkcyan;
+}
+
+.square{
+  height: 15px;
+  width:15px;
+  float: left;
+  margin-left: 0px;
+  user-select: none;
+  touch-action: none;
+}
+
+.square1{
+  background-color: rgba(128,128,128,255);
+}
+.square2{
+  background-color: rgba(191,191,191,255);
+}
+
+.red{
+  height: 15px;
+  width :15px;
+  background-color: red;
+}
+
+p{
+  line-height: 1em;
+  margin-top: -17px;
+  user-select: none;
+}
+
+h2{
+  color: red;
+  font-weight: bold;
+}

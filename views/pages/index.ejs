@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <link href="./styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <h2>Welcome to PixiArtSimple!</h2>
+
+    <% for(let ia=0; ia<8; ia++){ %>
+      <% for(let ib=0; ib<8; ib++){ %>
+        <div class="square square1" 
+        id=<%= "squareA_" + ia + "-" + ib %>
+        onclick="getId(this.id)"
+        ></div>
+
+        <div class="square square2" 
+        id=<%= "squareB_" + ia + "-" + ib %>
+        onclick="getId(this.id)"
+        ></div>
+      <% } %>
+      <p>&nbsp;</p>
+      <% for(let ib=0; ib<8; ib++){ %>
+        <div class="square square2"
+        id=<%= "squareC_" + ia + "-" + ib %>
+        onclick="getId(this.id)"
+        ></div>
+
+        <div class="square square1"
+        id=<%= "squareD_" + ia + "-" + ib %>
+        onclick="getId(this.id)"
+        ></div>
+      <% } %>
+        <p>&nbsp;</p>
+    <% } %>
+
+    <p>&nbsp</p>
+
+    <div class="red" onclick="pickColor(this.class);"></div>
+
+
+    <script>
+      // //delete this cuz if more people use website -> no work
+      // // function sendIdToServer(id) {
+      // //   fetch('/clicked', {
+      // //     method: 'POST',
+      // //     headers: {
+      // //       'Content-Type': 'application/json',
+      // //     },
+      // //     body: JSON.stringify({ id: id }),
+      // //   })
+      // //   .then(response => {
+      // //     console.log('Response received:', response);
+      // //   });
+      // // }
+      let color = 'rgb(0,0,0)';
+      let isMouseDown = false;
+      let isTouchDown = false;
+
+      function pickColor(colorClass){
+        color = window.getComputedStyle(document.querySelector('.red')).getPropertyValue('background-color');
+      }
+      function getId(id) {
+        console.log(id);
+
+        document.querySelector(`#${id}`).style.backgroundColor = color;
+      }
+
+      //for mobile
+      document.addEventListener('touchstart', function(event) {
+       isTouchDown = true;
+      });
+      document.addEventListener('touchend', function(event) {
+        isTouchDown = false;  
+      });
+      
+      document.addEventListener('touchmove', function(event) {
+        let realTarget = document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY);
+        
+        if (isTouchDown && realTarget.classList.contains('square')) {
+          realTarget.style.backgroundColor = color;
+          realTarget.classList.add('highlight');
+        } else {
+          event.target.classList.remove('highlight');
+        }
+      });
+      
+      
+      
+      //for pc
+      document.addEventListener('mousedown', function(event) {
+        if (event.button === 0) {
+          isMouseDown = true;
+        }
+      });
+      document.addEventListener('mouseup', function(event) {
+        if (event.button === 0) {
+          isMouseDown = false;
+        }
+      });
+      document.addEventListener('mousemove', function(event) {
+        if (isMouseDown && event.target.classList.contains('square')) {
+          event.target.style.backgroundColor = color;
+          event.target.classList.add('highlight');
+        } else {
+          event.target.classList.remove('highlight');
+        } 
+      });
+
+      </script>
+  </body>
+</html>
