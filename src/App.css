@@ -61,18 +61,6 @@ body{
   border-radius: 25%;
   border: 1px solid black;
 }
-.red{ 
-  background-color: red;
-}
-.blue{
-  background-color: blue;
-}
-.green{
-  background-color: green;
-}
-.pink{
-  background-color: pink;
-}
 
 p{
   line-height: 1em;
