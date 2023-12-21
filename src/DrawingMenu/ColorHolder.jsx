@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ColorPicker } from './ColorPicker';
+import { btnColorExp, setBtnColorExp, usingPip } from './DrawingItems/Pipette';
+import { colorExp, setColorExp } from '../App';
 
 export const addColor = (colorCode, outsideColorArr, outsideSetColorArr) => {
   outsideSetColorArr(
@@ -26,10 +27,10 @@ const ColorHolder = () => {
   outsideSetColorArr=setColorArr;
 
   const pickColor = (colorClass) => {
-    let colorS = colorClass;
+    setColorExp(colorClass);
+    setBtnColorExp('3d3d3d');
     var root = document.querySelector(':root');
-    root.style.setProperty('--selectedColor', `${colorS}`);
-    console.log('hey');
+    root.style.setProperty('--selectedColor', `${colorClass}`);
   }
 
   return (
@@ -37,11 +38,6 @@ const ColorHolder = () => {
       { colorArr.map((item) => {
         return <div className='color' colorCode={item.colorCode} style={{backgroundColor:item.colorCode}} onClick={function (e) {pickColor(item.colorCode)}}></div>;
       }) }
-
-      {/* <div className="red color" onClick={function (e) {pickColor('255,0,0')}}></div>
-      <div className="blue color" onClick={function (e) {pickColor('0,0,255')}}></div>
-      <div className="green color" onClick={function (e) {pickColor('34,139,34')}}></div>
-      <div className="pink color" onClick={function (e) {pickColor('255,192,203')}}></div> */}
     </>
   )
 }

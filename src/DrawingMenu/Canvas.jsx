@@ -1,18 +1,21 @@
-const Canvas = ({colorS}) => {
+import { colorExp, setColorExp } from "../App";
+import { setBtnColorExp, usingPip, usingPipSet } from "./DrawingItems/Pipette";
+
+const Canvas = () => {
   let counter = 0;
   let isMouseDown = false;
   let isTouchDown = false;
 
   const handleClick = event => {
-    var root = document.querySelector(':root');
-    colorS = root.style.getPropertyValue('--selectedColor');
-    if(!colorS){
-      colorS = 'rgb(0,0,0)'
+    if(usingPip === true){
+      setColorExp(event.target.style.backgroundColor);
+      setBtnColorExp('#3d3d3d');
+      usingPipSet(false);
+      var root = document.querySelector(':root');
+      root.style.setProperty('--selectedColor', `${event.target.style.backgroundColor}`);
     }
-    // root.style.setProperty('--selectedColor', `${colorS}`);
-    event.target.style.backgroundColor = colorS;
-    // console.log(Object.values(colorS));
-    // console.log(event.target.id + 'hey');
+    else
+      event.target.style.backgroundColor = colorExp;
   }
 
   //for mobile
@@ -26,13 +29,7 @@ const Canvas = ({colorS}) => {
    document.addEventListener('touchmove', function(event) {
      let realTarget = document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY);
       if (isTouchDown && realTarget.classList.contains('square')) {
-        var root = document.querySelector(':root');
-        colorS = root.style.getPropertyValue('--selectedColor');
-        if(!colorS){
-          colorS = 'rgb(0,0,0)'
-        }
-
-        realTarget.style.backgroundColor = colorS;
+        realTarget.style.backgroundColor = colorExp;
         realTarget.classList.add('highlight');
      } else {
        event.target.classList.remove('highlight');
@@ -51,13 +48,7 @@ const Canvas = ({colorS}) => {
   });
   document.addEventListener('mousemove', function(event) {
     if (isMouseDown && event.target.classList.contains('square')) {
-      var root = document.querySelector(':root');
-      colorS = root.style.getPropertyValue('--selectedColor');
-      if(!colorS){
-        colorS = 'rgb(0,0,0)'
-      }
-
-      event.target.style.backgroundColor = colorS;
+      event.target.style.backgroundColor = colorExp;
       event.target.classList.add('highlight');
     } else {
       event.target.classList.remove('highlight');

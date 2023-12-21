@@ -8,8 +8,8 @@ body{
 
 .grid-container{
   display: grid;
-  grid-template-columns: 100px 500px;
-  grid-template-rows: 200px 200px;
+  grid-template-columns: 240px 500px;
+  grid-template-rows: 200px 280px;;
   gap: 12px;
   background-color: rgba(125,146,158,255);
   padding: 10px;
@@ -60,6 +60,30 @@ body{
   width :15px;
   border-radius: 25%;
   border: 1px solid black;
+}
+.pipette{
+  height: 30px;
+  width: 30px;
+  background-color: gray;
+  border: 1px solid black;
+  border-radius: 25%;
+}
+.color-picker-holder{
+  border: 1.5px solid white;
+  border-radius: 3px;
+  outline: solid black;
+  grid-column: 1/2;
+  grid-row: 2/3;
+  background-color: rgba(101,85,97,255);
+}
+.color-picker{
+  margin: 0 auto;
+  margin-top: 5px;
+}
+.color-picker-btn{
+  margin-left: auto;
+  margin-left: 16px;
+  width: 200px;
 }
 
 p{

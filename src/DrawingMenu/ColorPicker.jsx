@@ -14,13 +14,14 @@ const ColorPicker = () => {
   }
 
   return (
-    <div className="App">
+    <div >
       <ChromePicker
+      className="color-picker"
         onChange={handleChangeComplete}
         color={currentColor}
       />
 
-      <button onClick={function(e) {handleColorButton(currentColor)}}>Add</button>
+      <button className="color-picker-btn" onClick={function(e) {handleColorButton(currentColor)}}>Add</button>
     </div>
   );
 }
