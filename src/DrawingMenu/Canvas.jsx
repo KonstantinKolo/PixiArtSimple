@@ -1,21 +1,63 @@
 import { colorExp, setColorExp } from "../App";
-import { setBtnColorExp, usingPip, usingPipSet } from "./DrawingItems/Pipette";
+import { usingBuc } from "./DrawingItems/Bucket";
+import { setBtnColorPipExp, usingPip, usingPipSet } from "./DrawingItems/Pipette";
 
 const Canvas = () => {
-  let counter = 0;
+  let counterX = 0;
+  let counterY = 0;
   let isMouseDown = false;
   let isTouchDown = false;
+
+  const bucSelector = (originalId) => {
+    const checkColor = document.getElementById(originalId).style.backgroundColor;
+
+    const recursionInSelector = (id) => {
+      const idArray = id.split(',');
+      const tU = document.getElementById(`${idArray[0]},${idArray[1]-1}`);
+      const tL = document.getElementById(`${idArray[0]-1},${idArray[1]}`);
+      const tD = document.getElementById(`${idArray[0]},${1+parseInt(idArray[1])}`);
+      const tR = document.getElementById(`${1+parseInt(idArray[0])},${idArray[1]}`);
+      // const tUL = document.getElementById(`${parseInt(idArray[0])-1},${parseInt(idArray[1])-1}`);
+      // const tUR = document.getElementById(`${parseInt(idArray[0])+1},${parseInt(idArray[1])-1}`);
+      // const tDL = document.getElementById(`${parseInt(idArray[0])-1},${parseInt(idArray[1])+1}`);
+      // const tDR = document.getElementById(`${parseInt(idArray[0])+1},${parseInt(idArray[1])+1}`);
+      let targetArr = [tU, tL, tD, tR];
+      const helpArr = [];
+      targetArr.forEach(function (element) {
+        if(element){
+          helpArr.push(element);
+        }
+      })
+      targetArr = helpArr;
+      targetArr.forEach(function(element) {
+        if(element.style.backgroundColor === checkColor){
+          if(element.nodeName === 'DIV'){
+            console.log(element);
+            element.style.backgroundColor = colorExp;
+            recursionInSelector(element.id);
+          }
+        }
+      })
+    }
+
+    recursionInSelector(originalId);
+  } 
 
   const handleClick = event => {
     if(usingPip === true){
       setColorExp(event.target.style.backgroundColor);
-      setBtnColorExp('#3d3d3d');
+      setBtnColorPipExp('#3d3d3d');
       usingPipSet(false);
       var root = document.querySelector(':root');
       root.style.setProperty('--selectedColor', `${event.target.style.backgroundColor}`);
     }
-    else
+    else if(usingBuc === true){
+      bucSelector(event.target.id);
+    }
+    else{
+      console.log(event.target.style.backgroundColor);
       event.target.style.backgroundColor = colorExp;
+    }
   }
 
   //for mobile
@@ -60,30 +102,30 @@ const Canvas = () => {
     <>
       {[...Array(8)].map((x, i) => 
         <>
-          <p>&nbsp;</p>
+          <p id={`${counterX=0},${counterY++}`}>&nbsp;</p>
           {[...Array(8)].map((x, i) =>
             <>
               <div className='square1 square' 
-              id={++counter} 
+              id={`${++counterX},${counterY}`} 
               onClick={handleClick.bind(this)}
               ></div>
 
               <div className='square2 square'
-              id={++counter} 
+              id={`${++counterX},${counterY}`} 
               onClick={handleClick.bind(this)}
                ></div>
             </>
           )}
-          <p>&nbsp;</p>
+          <p id={`${counterX=0},${counterY++}`}>&nbsp;</p>
           {[...Array(8)].map((x, i) =>
             <>
               <div className='square2 square'
-              id={++counter}
+              id={`${++counterX},${counterY}`}
               onClick={handleClick.bind(this)}
                ></div>
 
               <div className='square1 square'
-              id={++counter}
+              id={`${++counterX},${counterY}`}
               onClick={handleClick.bind(this)}
                ></div>
             </>
@@ -94,4 +136,4 @@ const Canvas = () => {
   )
 }
 
-export { Canvas }; 
+export { Canvas } 

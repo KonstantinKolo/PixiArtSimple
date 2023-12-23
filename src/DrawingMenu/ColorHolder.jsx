@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { btnColorExp, setBtnColorExp, usingPip } from './DrawingItems/Pipette';
+import { setBtnColorPipExp } from './DrawingItems/Pipette';
 import { colorExp, setColorExp } from '../App';
 
 export const addColor = (colorCode, outsideColorArr, outsideSetColorArr) => {
@@ -28,7 +28,7 @@ const ColorHolder = () => {
 
   const pickColor = (colorClass) => {
     setColorExp(colorClass);
-    setBtnColorExp('3d3d3d');
+    setBtnColorPipExp('3d3d3d');
     var root = document.querySelector(':root');
     root.style.setProperty('--selectedColor', `${colorClass}`);
   }

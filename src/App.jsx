@@ -2,6 +2,7 @@ import './App.css';
 import { Canvas } from './DrawingMenu/Canvas.jsx';
 import { ColorHolder } from './DrawingMenu/ColorHolder.jsx';
 import { ColorPicker } from './DrawingMenu/ColorPicker.jsx';
+import { Bucket } from './DrawingMenu/DrawingItems/Bucket.jsx';
 import { Pipette } from './DrawingMenu/DrawingItems/Pipette.jsx';
 import { useState } from 'react';
 
@@ -24,11 +25,12 @@ function App() {
 
         <div className='color-holder'>
           <ColorHolder />
-          <Pipette />
         </div>
         <div className='color-picker-holder'>
           <ColorPicker />
         </div>
+        <Pipette />
+        <Bucket />
       </div>
     </>
   );
