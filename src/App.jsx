@@ -3,6 +3,7 @@ import { Canvas } from './DrawingMenu/Canvas.jsx';
 import { ColorHolder } from './DrawingMenu/ColorHolder.jsx';
 import { ColorPicker } from './DrawingMenu/ColorPicker.jsx';
 import { Bucket } from './DrawingMenu/DrawingItems/Bucket.jsx';
+import { Eraser } from './DrawingMenu/DrawingItems/Eraser.jsx';
 import { Pipette } from './DrawingMenu/DrawingItems/Pipette.jsx';
 import { useState } from 'react';
 
@@ -31,6 +32,7 @@ function App() {
         </div>
         <Pipette />
         <Bucket />
+        <Eraser />
       </div>
     </>
   );

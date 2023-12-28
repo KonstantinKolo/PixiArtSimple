@@ -1,5 +1,6 @@
 import { colorExp, setColorExp } from "../App";
 import { usingBuc } from "./DrawingItems/Bucket";
+import { usingErs } from "./DrawingItems/Eraser";
 import { setBtnColorPipExp, usingPip, usingPipSet } from "./DrawingItems/Pipette";
 
 const Canvas = () => {
@@ -32,7 +33,6 @@ const Canvas = () => {
       targetArr.forEach(function(element) {
         if(element.style.backgroundColor === checkColor){
           if(element.nodeName === 'DIV'){
-            console.log(element);
             element.style.backgroundColor = colorExp;
             recursionInSelector(element.id);
           }
@@ -53,6 +53,9 @@ const Canvas = () => {
     }
     else if(usingBuc === true){
       bucSelector(event.target.id);
+    }
+    else if(usingErs === true){
+      event.target.style.backgroundColor = '';
     }
     else{
       console.log(event.target.style.backgroundColor);
@@ -89,7 +92,18 @@ const Canvas = () => {
     }
   });
   document.addEventListener('mousemove', function(event) {
-    if (isMouseDown && event.target.classList.contains('square')) {
+    if(usingErs === true){
+      var root = document.querySelector(':root');
+      if(event.target.classList.contains('square1'))
+        root.style.setProperty('--selectedColor', `rgba(128,128,128,255)`);
+      else if(event.target.classList.contains('square2'))
+        root.style.setProperty('--selectedColor', `rgba(191,191,191,255)`);
+    }
+    if(usingErs === true && isMouseDown && event.target.classList.contains('square')){
+      event.target.style.backgroundColor = '';
+      event.target.classList.add('highlight');
+    }
+    else if (isMouseDown && event.target.classList.contains('square')) {
       event.target.style.backgroundColor = colorExp;
       event.target.classList.add('highlight');
     } else {
