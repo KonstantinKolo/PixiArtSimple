@@ -64,6 +64,7 @@ const Canvas = () => {
   }
 
   //for mobile
+  // !!!!! need to add eraser to mobile !!!!!!
   document.addEventListener('touchstart', function(event) {
     isTouchDown = true;
    });
