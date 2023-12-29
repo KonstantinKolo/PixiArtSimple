@@ -2,10 +2,11 @@ import { colorExp, setColorExp } from "../App";
 import { usingBuc } from "./DrawingItems/Bucket";
 import { usingErs } from "./DrawingItems/Eraser";
 import { setBtnColorPipExp, usingPip, usingPipSet } from "./DrawingItems/Pipette";
+import { canvasHeight, canvasWidth } from "../HandlePages";
 
 const Canvas = () => {
   let counterX = 0;
-  let counterY = 0;
+  let counterY = 1;
   let isMouseDown = false;
   let isTouchDown = false;
 
@@ -113,9 +114,59 @@ const Canvas = () => {
   });
 
 
+  const squareHandler = (x, y) => {
+    if(y % 2 === 0){
+      if(x % 2 === 0){
+        return(
+          <div className='square1 square' 
+            id={`${++counterX},${counterY}`} 
+            onClick={handleClick.bind(this)}
+          ></div>
+        )
+      }
+      else {
+        return(
+          <div className='square2 square'
+            id={`${++counterX},${counterY}`} 
+            onClick={handleClick.bind(this)}
+          ></div>
+        )
+      }
+    }
+    else{
+      if(x % 2 !== 0){
+        return(
+          <div className='square1 square' 
+            id={`${++counterX},${counterY}`} 
+            onClick={handleClick.bind(this)}
+          ></div>
+        )
+      }
+      else {
+        return(
+          <div className='square2 square'
+            id={`${++counterX},${counterY}`} 
+            onClick={handleClick.bind(this)}
+          ></div>
+        )
+      }
+    }
+  }
+
   return (
     <>
-      {[...Array(8)].map((x, i) => 
+      {[...Array(canvasHeight)].map((x,i) => 
+        <>
+          {[...Array(canvasWidth)].map((x,i) =>
+            <>
+              {squareHandler(counterX,counterY)}
+            </>
+          )}
+          <p id={`${counterX=0},${counterY++}`}>&nbsp;</p>
+        </>
+      )}
+
+      {/* {[...Array(8)].map((x, i) => 
         <>
           <p id={`${counterX=0},${counterY++}`}>&nbsp;</p>
           {[...Array(8)].map((x, i) =>
@@ -146,7 +197,7 @@ const Canvas = () => {
             </>
           )}
         </>
-      )}
+      )} */}
     </>
   )
 }
