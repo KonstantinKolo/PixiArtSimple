@@ -2,6 +2,7 @@ import { colorExp, setColorExp } from "../App";
 import { usingBuc } from "./DrawingItems/Bucket";
 import { usingErs } from "./DrawingItems/Eraser";
 import { setBtnColorPipExp, usingPip, usingPipSet } from "./DrawingItems/Pipette";
+import { usingRC } from "./DrawingItems/RemoveColors";
 import { canvasHeight, canvasWidth } from "../HandlePages";
 
 const Canvas = () => {
@@ -19,10 +20,6 @@ const Canvas = () => {
       const tL = document.getElementById(`${idArray[0]-1},${idArray[1]}`);
       const tD = document.getElementById(`${idArray[0]},${1+parseInt(idArray[1])}`);
       const tR = document.getElementById(`${1+parseInt(idArray[0])},${idArray[1]}`);
-      // const tUL = document.getElementById(`${parseInt(idArray[0])-1},${parseInt(idArray[1])-1}`);
-      // const tUR = document.getElementById(`${parseInt(idArray[0])+1},${parseInt(idArray[1])-1}`);
-      // const tDL = document.getElementById(`${parseInt(idArray[0])-1},${parseInt(idArray[1])+1}`);
-      // const tDR = document.getElementById(`${parseInt(idArray[0])+1},${parseInt(idArray[1])+1}`);
       let targetArr = [tU, tL, tD, tR];
       const helpArr = [];
       targetArr.forEach(function (element) {
@@ -165,39 +162,6 @@ const Canvas = () => {
           <p id={`${counterX=0},${counterY++}`}>&nbsp;</p>
         </>
       )}
-
-      {/* {[...Array(8)].map((x, i) => 
-        <>
-          <p id={`${counterX=0},${counterY++}`}>&nbsp;</p>
-          {[...Array(8)].map((x, i) =>
-            <>
-              <div className='square1 square' 
-              id={`${++counterX},${counterY}`} 
-              onClick={handleClick.bind(this)}
-              ></div>
-
-              <div className='square2 square'
-              id={`${++counterX},${counterY}`} 
-              onClick={handleClick.bind(this)}
-               ></div>
-            </>
-          )}
-          <p id={`${counterX=0},${counterY++}`}>&nbsp;</p>
-          {[...Array(8)].map((x, i) =>
-            <>
-              <div className='square2 square'
-              id={`${++counterX},${counterY}`}
-              onClick={handleClick.bind(this)}
-               ></div>
-
-              <div className='square1 square'
-              id={`${++counterX},${counterY}`}
-              onClick={handleClick.bind(this)}
-               ></div>
-            </>
-          )}
-        </>
-      )} */}
     </>
   )
 }

@@ -6,6 +6,7 @@ import { Bucket } from './DrawingMenu/DrawingItems/Bucket.jsx';
 import { Eraser } from './DrawingMenu/DrawingItems/Eraser.jsx';
 import { Pipette } from './DrawingMenu/DrawingItems/Pipette.jsx';
 import { useState } from 'react';
+import { RemoveColors } from './DrawingMenu/DrawingItems/RemoveColors.jsx';
 
 export let colorExp;
 export let setColorExp;
@@ -25,14 +26,19 @@ function App() {
         <p></p>
 
         <div className='color-holder'>
-          <ColorHolder />
+          <div className='all-colors'>
+            <ColorHolder />
+          </div>
+          <div className='all-tools'>
+            <Pipette />
+            <Bucket />
+            <Eraser />
+            <RemoveColors />
+          </div>
         </div>
         <div className='color-picker-holder'>
           <ColorPicker />
         </div>
-        <Pipette />
-        <Bucket />
-        <Eraser />
       </div>
     </>
   );

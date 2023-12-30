@@ -54,6 +54,12 @@ body{
   display: grid;
   background-color: rgba(101,85,97,255);
   grid-template-columns: 20px 20px 20px 20px;
+  grid-template-rows: 100px;
+}
+.all-colors{
+  grid-column: 1/5;
+  display: grid;
+  grid-template-columns: 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px;
   grid-template-rows: auto;
 }
 .color{
@@ -61,6 +67,12 @@ body{
   width :15px;
   border-radius: 25%;
   border: 1px solid black;
+}
+.all-tools{
+  grid-column: 1/5;
+  display: grid;
+  grid-template-columns: 90px 90px 90px;
+  grid-template-rows: auto;
 }
 .bucket{
   height: 30px;
@@ -77,6 +89,13 @@ body{
   user-select: none;
 }
 .eraser{
+  height: 30px;
+  width: 30px;
+  border: 1px solid black;
+  border-radius: 25%;
+  user-select: none;
+}
+.remove-colors{
   height: 30px;
   width: 30px;
   border: 1px solid black;
