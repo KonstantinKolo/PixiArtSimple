@@ -1,6 +1,8 @@
 import { useState, useRef } from "react";
 import MainMenu from './MainMenu';
 import App from "./App";
+import './MainMenu.css'
+import gif from './img/cat-spinning.gif'
 
 export let canvasHeight;
 export let canvasWidth;
@@ -36,36 +38,50 @@ const HandlePages = () => {
       width = width * -1;
     console.log(width);
     canvasWidth = width;
+
+    let elem = document.getElementsByClassName('page-container')[0];
+    console.log(elem.style);
+    elem.style.backgroundImage = '';
   };
 
 
   return(
-    <>
+    <div className="page-container" 
+    style={{ backgroundImage: `url(${gif})` }}>
       {currentPage}
       {visible &&
-      <>
-        <button onClick={function() {removeElement(); handleChange(); setCurrentPage(<App />);}}>Change Page</button>
+      <div className="main-menu">
+        <div className="input-holder">
+          <input 
+            className="input-button"
+            ref={inputHeightRef}
+            placeholder='height:'
+            type="number"
+            min='0'
+            id="height"
+            name="height"
+            />
+          <input 
+            className="input-button"
+            ref={inputWidthRef}
+            placeholder="width:"
+            type="number"
+            min='0'
+            id="width"
+            name="width"
+            />
+        </div>
         <p></p>
-        <input 
-          ref={inputHeightRef}
-          placeholder='16'
-          type="number"
-          min='0'
-          id="height"
-          name="height"
-        />
-        <input 
-          ref={inputWidthRef}
-          placeholder="16"
-          type="number"
-          min='0'
-          id="width"
-          name="width"
-        />
-        {/* <button onClick={handleChange}>Log message</button> */}
-      </>
+        <button onClick={function() {removeElement(); handleChange(); setCurrentPage(<App />);}} className="page-button">Start drawing 🎨</button>
+        <p className="credits">
+          This site was created by
+           <a href='https://github.com/KonstantinKolo'> Konstantin
+          </a>
+          . Check the <a href='https://github.com/KonstantinKolo/PixiArtSimple'>source code</a>.
+        </p>
+      </div>
       }
-    </>
+    </div>
   )
 }
 export default HandlePages;

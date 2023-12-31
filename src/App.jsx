@@ -18,26 +18,30 @@ function App() {
 
   return (
     <>
-      <div className='grid-container center'>
+      <div className='grid-container'>
         <div className='canvas-container'>
-         <Canvas />
+          <div className='canvas-wraper'>
+            <Canvas />
+          </div>
         </div>
 
         <p></p>
 
-        <div className='color-holder'>
-          <div className='all-colors'>
-            <ColorHolder />
+        <div className='left-side'>
+          <div className='color-holder'>
+            <div className='all-colors'>
+              <ColorHolder />
+            </div>
+            <div className='all-tools'>
+              <Pipette />
+              <Bucket />
+              <Eraser />
+              <RemoveColors />
+            </div>
           </div>
-          <div className='all-tools'>
-            <Pipette />
-            <Bucket />
-            <Eraser />
-            <RemoveColors />
+          <div className='color-picker-holder'>
+            <ColorPicker />
           </div>
-        </div>
-        <div className='color-picker-holder'>
-          <ColorPicker />
         </div>
       </div>
     </>

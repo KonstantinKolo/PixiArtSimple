@@ -2,17 +2,27 @@
   --selectedColor: black;
 }
 
-body{
-  background-color: rgba(125,146,158,255);
+::-webkit-scrollbar {
+  display: none;
 }
 
+html{
+  height: 100%;
+  width: auto;
+  background-image: linear-gradient(#cee3ff, #8db8f0);
+}
 .grid-container{
   display: grid;
-  grid-template-columns: 240px 500px;
+  grid-template-columns: 240px auto;
   grid-template-rows: 200px 280px;;
-  gap: 12px;
-  background-color: rgba(125,146,158,255);
+  gap: 9px;
   padding: 10px;
+  bottom:5px;
+  position: absolute;
+  width: 98%;
+  height: auto;
+  margin-left: -10px;
+  white-space:initial;
 }
 
 .canvas-container{
@@ -23,15 +33,24 @@ body{
   grid-row: 1/3;
   background-color: rgba(101,85,97,255);
   padding: 10px;
+  text-align: center;
+  display: table;
+  height: 100%;
+  width: 100%;
 }
-
+.canvas-wraper{
+  display: table-cell;
+  position: relative;
+  vertical-align: middle;
+}
 .square{
+  display: inline-block;
   height: 18px;
   width: 18px;
-  float: left;
-  margin-left: 0px;
+  margin-left: px;
   user-select: none;
   touch-action: none;
+  cursor: pointer;
 }
 .square:hover {
   background-color: var(--selectedColor);
@@ -44,12 +63,22 @@ body{
   background-color: rgba(191,191,191,255);
 }
 
-.color-holder{
+
+.left-side{
+  grid-column: 1/2;
+  grid-row: 1/3;
+  display: grid;
+  grid-template-columns: 240px;
+  grid-template-rows: 200px 280px;
   border: 1.5px solid white;
   border-radius: 3px;
   outline: solid black;
+  background-color: rgba(101,85,97,255);
+  height: 509px;
+}
+
+.color-holder{
   padding: 10px;
-  grid-column: 1/2;
   grid-row: 1/2;
   display: grid;
   background-color: rgba(101,85,97,255);
@@ -63,6 +92,7 @@ body{
   grid-template-rows: auto;
 }
 .color{
+  cursor: pointer;
   height: 15px;
   width :15px;
   border-radius: 25%;
@@ -75,6 +105,7 @@ body{
   grid-template-rows: auto;
 }
 .bucket{
+  cursor: pointer;
   height: 30px;
   width: 30px;
   border: 1px solid black;
@@ -82,6 +113,7 @@ body{
   user-select: none;
 }
 .pipette{
+  cursor: pointer;
   height: 30px;
   width: 30px;
   border: 1px solid black;
@@ -89,6 +121,7 @@ body{
   user-select: none;
 }
 .eraser{
+  cursor: pointer;
   height: 30px;
   width: 30px;
   border: 1px solid black;
@@ -96,6 +129,7 @@ body{
   user-select: none;
 }
 .remove-colors{
+  cursor: pointer;
   height: 30px;
   width: 30px;
   border: 1px solid black;
@@ -103,10 +137,6 @@ body{
   user-select: none;
 }
 .color-picker-holder{
-  border: 1.5px solid white;
-  border-radius: 3px;
-  outline: solid black;
-  grid-column: 1/2;
   grid-row: 2/3;
   background-color: rgba(101,85,97,255);
 }
@@ -115,6 +145,7 @@ body{
   margin-top: 5px;
 }
 .color-picker-btn{
+  cursor: pointer;
   margin-left: auto;
   margin-left: 16px;
   width: 200px;
@@ -124,13 +155,7 @@ p{
   line-height: 1em;
   
   /*need to change this if i change square size*/
-  margin-top: -13.99px;
+  margin-top: -36.1px;
   
   user-select: none;
-}
-
-.center {
-  margin: auto;
-  width: 50%;
-  padding: 10px;
 }

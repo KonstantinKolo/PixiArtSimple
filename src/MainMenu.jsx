@@ -1,8 +1,10 @@
+import './MainMenu.css'
+
 const MainMenu = () => {
   return(
-    <>
-      <h1>HEY</h1>
-    </>
+    <div className='main-menu'>
+      <h1 className='initial-text'>👋🏻 <br/> Welcome <br/> to <br/>PixiArtSimple</h1>
+    </div>
   )
 }
 export default MainMenu;
