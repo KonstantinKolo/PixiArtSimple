@@ -1,5 +1,6 @@
 import { colorExp } from "../../App";
 import { useState } from "react";
+import img from '../../img/bucket.png'
 
 export let usingBuc;
 export let usingBucSet;
@@ -9,15 +10,18 @@ const Bucket = () => {
   usingBuc = stateBuc;
   usingBucSet = setStateBuc;
 
-  const [btnColor, setBtnColor] = useState('#3d3d3d');
+  const [btnColor, setBtnColor] = useState('#f977c1');
 
   const handleClick = (e) => {
-    if(btnColor === '#3d3d3d'){
-      setBtnColor('#2e2e2e');
+    if(btnColor === '#f977c1'){
+      e.target.classList.add('selected-tool');
+      setBtnColor('#f952b1');
       setStateBuc(true);
     }
     else{
-      setBtnColor('#3d3d3d');
+      e.target.classList.remove('selected-tool');
+      // console.log(e.target.style.backgroundColor);
+      setBtnColor('#f977c1');
       setStateBuc(false);
     }
   }
@@ -25,10 +29,11 @@ const Bucket = () => {
   return(
     <>
       <div
-      className="bucket"
-      onClick={handleClick}
-      style={{backgroundColor:btnColor}}
-      >Buc</div>
+      className="bucket tool"
+      onClick={handleClick.bind(this)}
+      style={{backgroundColor:btnColor,
+      backgroundImage:`url(${img})`}}
+      ></div>
     </>
   );
 };

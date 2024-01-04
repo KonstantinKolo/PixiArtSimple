@@ -4,6 +4,7 @@ import { usingErs } from "./DrawingItems/Eraser";
 import { setBtnColorPipExp, usingPip, usingPipSet } from "./DrawingItems/Pipette";
 import { usingRC } from "./DrawingItems/RemoveColors";
 import { canvasHeight, canvasWidth } from "../HandlePages";
+import { usingM } from "./DrawingItems/Magnify";
 
 const Canvas = () => {
   let counterX = 0;
@@ -159,7 +160,7 @@ const Canvas = () => {
               {squareHandler(counterX,counterY)}
             </>
           )}
-          <p id={`${counterX=0},${counterY++}`}>&nbsp;</p>
+          <p id={`${counterX=0},${counterY++}`} className="pars">&nbsp;</p>
         </>
       )}
     </>

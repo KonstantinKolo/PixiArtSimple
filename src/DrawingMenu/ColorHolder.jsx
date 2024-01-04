@@ -4,7 +4,7 @@ import { colorExp, setColorExp } from '../App';
 import { usingRC } from './DrawingItems/RemoveColors';
 
 export const addColor = (colorCode, outsideColorArr, outsideSetColorArr) => {
-  if(outsideColorArr.length >= 66){
+  if(outsideColorArr.length >= 64){
     outsideColorArr.push({colorCode:colorCode});
     outsideSetColorArr(outsideColorArr => {
       return(
@@ -12,7 +12,7 @@ export const addColor = (colorCode, outsideColorArr, outsideSetColorArr) => {
     )  
     })
   }
-  else if(outsideColorArr.length < 66){
+  else if(outsideColorArr.length < 64){
     outsideSetColorArr(
     [
       ...outsideColorArr, 

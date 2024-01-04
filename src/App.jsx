@@ -7,6 +7,8 @@ import { Eraser } from './DrawingMenu/DrawingItems/Eraser.jsx';
 import { Pipette } from './DrawingMenu/DrawingItems/Pipette.jsx';
 import { useState } from 'react';
 import { RemoveColors } from './DrawingMenu/DrawingItems/RemoveColors.jsx';
+import { Magnify } from './DrawingMenu/DrawingItems/Magnify.jsx'
+import { Demagnify } from './DrawingMenu/DrawingItems/Demagnify.jsx';
 
 export let colorExp;
 export let setColorExp;
@@ -37,6 +39,8 @@ function App() {
               <Bucket />
               <Eraser />
               <RemoveColors />
+              <Magnify />
+              <Demagnify />
             </div>
           </div>
           <div className='color-picker-holder'>

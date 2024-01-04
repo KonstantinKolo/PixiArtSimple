@@ -1,4 +1,5 @@
 import { useState } from "react";
+import img from '../../img/pipette.png'
 
 export let usingPip;
 export let usingPipSet;
@@ -10,27 +11,30 @@ const Pipette = () => {
   usingPip = statePip;
   usingPipSet = setStatePip;
 
-  const [btnColor, setBtnColor] = useState('#3d3d3d')
+  const [btnColor, setBtnColor] = useState('#f977c1')
   btnColorPipExp = btnColor;
   setBtnColorPipExp = setBtnColor;
 
   const handleClick = (e) => {
-    if(btnColor === '#3d3d3d'){
-      setBtnColor('#2e2e2e');
+    if(btnColor === '#f977c1'){
+      e.target.classList.add('selected-tool');
+      setBtnColor('#f952b1');
       setStatePip(true);
     }
     else{
-      setBtnColor('#3d3d3d');
+      e.target.classList.remove('selected-tool');
+      setBtnColor('#f977c1');
       setStatePip(false);
     }
   }
 
   return(
     <div
-    className="pipette"
+    className="pipette tool"
     onClick={handleClick.bind(this)}
-    style={{backgroundColor:btnColor}}
-    >Pip</div>
+    style={{backgroundColor:btnColor,
+    backgroundImage:`url(${img})`}}
+    ></div>
   )
 }
 export { Pipette };

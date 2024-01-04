@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { colorExp, setColorExp } from "../../App";
+import img from '../../img/eraser.png'
 
 export let usingErs;
 export let usingErsSet;
@@ -9,31 +10,34 @@ const Eraser = () => {
   usingErs = stateErs;
   usingErsSet = setStateErs;
 
-  const [btnColor, setBtnColor] = useState('#3d3d3d')
+  const [btnColor, setBtnColor] = useState('#f977c1')
 
   const [lastColor, setLastColor] = useState();
 
   const handleClick = (e) => {
-    if(btnColor === '#3d3d3d'){
+    if(btnColor === '#f977c1'){
       // setLastColor(colorExp);
       // setColorExp('')
-      setBtnColor('#2e2e2e');
+      e.target.classList.add('selected-tool');
+      setBtnColor('#f952b1');
       setStateErs(true);
     }
     else{
       var root = document.querySelector(':root');
       root.style.setProperty('--selectedColor', `${colorExp}`);
-      setBtnColor('#3d3d3d');
+      e.target.classList.remove('selected-tool');
+      setBtnColor('#f977c1');
       setStateErs(false);
     }
   }
 
   return(
     <div
-    className="eraser"
+    className="eraser tool"
     onClick={handleClick.bind(this)}
-    style={{backgroundColor:btnColor}}
-    >Ers</div>
+    style={{backgroundColor:btnColor,
+    backgroundImage:`url(${img})`}}
+    ></div>
   )
 }
 export { Eraser };
