@@ -152,7 +152,7 @@ const Canvas = () => {
   }
 
   return (
-    <>
+    <div className="screen-shot-target">
       {[...Array(canvasHeight)].map((x,i) => 
         <>
           {[...Array(canvasWidth)].map((x,i) =>
@@ -160,10 +160,10 @@ const Canvas = () => {
               {squareHandler(counterX,counterY)}
             </>
           )}
-          <p id={`${counterX=0},${counterY++}`} className="pars">&nbsp;</p>
+          <p id={`${counterX=0},${counterY++}`} className="pars" >&nbsp;</p>
         </>
       )}
-    </>
+    </div>
   )
 }
 

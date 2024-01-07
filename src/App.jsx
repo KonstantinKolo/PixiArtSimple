@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { RemoveColors } from './DrawingMenu/DrawingItems/RemoveColors.jsx';
 import { Magnify } from './DrawingMenu/DrawingItems/Magnify.jsx'
 import { Demagnify } from './DrawingMenu/DrawingItems/Demagnify.jsx';
+import { takeScreenShot } from './utils.js';
 
 export let colorExp;
 export let setColorExp;
@@ -18,8 +19,16 @@ function App() {
   colorExp = colorState;
   setColorExp = setColorState;
 
+  const captureScreen = () => {
+    takeScreenShot('screen-shot-target', 'MyImage', 'image/jpeg', '#ffffff');
+  }
+
   return (
     <>
+      <button className='screenshot-btn'
+      onClick={captureScreen}
+      >Download</button>
+
       <div className='grid-container'>
         <div className='canvas-container'>
           <div className='canvas-wraper'>

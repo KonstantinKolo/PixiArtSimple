@@ -19,28 +19,13 @@ const HandlePages = () => {
   const inputWidthRef = useRef();
 
   const handleChange = event => {
-    let height = inputHeightRef.current.value;
-    if(!Number.isInteger(height))
-      height=Math.round(height);
-    if(!height)
-      height = 16;
-    if(height<0)
-      height = height * -1;
-    console.log(height);
-    canvasHeight = height;
+    let widthElem = document.getElementsByClassName('width-select')[0];
+    let heightElem = document.getElementsByClassName('height-select')[0];
 
-    let width = inputWidthRef.current.value;
-    if(!Number.isInteger(width))
-      width=Math.round(width);
-    if(!width)
-      width = 16;
-    if(width<0)
-      width = width * -1;
-    console.log(width);
-    canvasWidth = width;
+    canvasWidth = Number(widthElem.value);
+    canvasHeight = Number(heightElem.value);
 
     let elem = document.getElementsByClassName('page-container')[0];
-    console.log(elem.style);
     elem.style.backgroundImage = '';
   };
 
@@ -51,25 +36,21 @@ const HandlePages = () => {
       {currentPage}
       {visible &&
       <div className="main-menu">
-        <div className="input-holder">
-          <input 
-            className="input-button"
-            ref={inputHeightRef}
-            placeholder='height:'
-            type="number"
-            min='0'
-            id="height"
-            name="height"
-            />
-          <input 
-            className="input-button"
-            ref={inputWidthRef}
-            placeholder="width:"
-            type="number"
-            min='0'
-            id="width"
-            name="width"
-            />
+        <div className="select-holder">
+          <select className="width-select select-unit" required>
+            <option value={16} disabled selected hidden>--WIDTH--</option>
+            <option value={4}>4x4</option>
+            <option value={8}>8x8</option>
+            <option value={16}>16x16</option>
+            <option value={24}>24x24</option>
+          </select>
+          <select className="height-select select-unit">
+            <option value={16} disabled selected hidden>--HEIGHT--</option>
+            <option value={4}>4x4</option>
+            <option value={8}>8x8</option>
+            <option value={16}>16x16</option>
+            <option value={24}>24x24</option>
+          </select>
         </div>
         <p></p>
         <button onClick={function() {removeElement(); handleChange(); setCurrentPage(<App />);}} className="page-button">Start drawing 🎨</button>

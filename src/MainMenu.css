@@ -4,11 +4,13 @@
   font-weight: normal;
   font-size: 2rem;
   margin: auto;
-  width: 50%;
-  padding: 10px;;
+  /* width: 50%; */
+  padding: 10px;
   text-align: center;
+  /* position: relative; */
 }
 .page-container{
+  position:fixed;
   height: 100%;
   width: 100%;
   background-size: 20%;
@@ -17,8 +19,12 @@
   background-position-y: top;
   user-select:none;
 }
+html,body{
+  margin: 0;
+  height: 100%;
+}
 
-.input-holder{
+.select-holder{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,7 +32,23 @@
   gap: 100px;
   place-items: center;
 }
-.input-button{
+.select-unit{
+  text-align: center;
+  width: 190px;
+  height: 35px;
+  border: 1px solid;
+  border-radius: 3px;
+  font-size: 17px;
+  text-align: center;
+  background-color: #ffcbf2;
+  color: cyan;
+  font-weight: bold;
+  cursor: pointer;
+}
+.option{
+  cursor: pointer;
+}
+/* .input-button{
   border: 1px;
   border-radius: 3px;
   height: 35px;
@@ -52,10 +74,10 @@ input[type=number] {
 ::placeholder {
   color: darkcyan;
   opacity: 1; /* Firefox */
-}
-::-ms-input-placeholder { /* Edge 12 -18 */
-  color: darkcyan;
-}
+/* } */
+/* ::-ms-input-placeholder { /* Edge 12 -18 */
+  /* color: darkcyan; */
+/* } */ 
 
 .page-button{
   width: 190px;
@@ -70,10 +92,12 @@ input[type=number] {
 
 .credits{
   font-size: 12px;
+  width: 28%;
   color:indianred;
   position:absolute;
-  bottom:0;
-  left:0;
+  top:100%;
+  left: 0%;
+  margin-left: 10px;
   opacity: 0.7;
 }
 a:link {
