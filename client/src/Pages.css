@@ -1,0 +1,52 @@
+#root{
+  width: 100%;
+  /* height: 80%; */
+}
+img{
+  border:5px solid black;
+  border-radius: 8px;
+}
+
+.register{
+  position: relative;
+  background-color: #d7813f;
+  border-radius: 5px;
+  margin-left: 7%;
+  width: 80%;
+  height: 100% ;
+  padding: 40px;
+}
+.login{
+  position: relative;
+  background-color: #d7813f;
+  border-radius: 5px;
+  margin-left: 7%;
+  width: 80%;
+  height: 100% ;
+  padding: 40px;
+}
+.input{
+  width: 400px;
+  height: 40px;
+  font-size: 25px;
+  border: 1px solid cyan;
+  border-radius: 3px;
+  text-align: center;
+  background-color: #ffcbf2;
+  font-weight: bold;
+  cursor: pointer;
+}
+.submit-btn{
+  width: 400px;
+  height: 40px;
+  font-size: 25px;
+  background-color: #f977c1;
+  color: #b0ef70;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px dashed #d7fcae;
+  border-radius: 5px;
+}
+.reg-pars{
+  height: 70px;
+}
