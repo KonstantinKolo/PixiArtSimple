@@ -49,6 +49,7 @@ const registerUser = async (req, res) => {
 
 // Login Endpoint
 const loginUser = async (req, res) => {
+  console.log('TEST')
   try{
     const { email, password } = req.body;
 
