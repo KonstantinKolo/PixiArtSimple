@@ -65,7 +65,11 @@ const loginUser = async (req, res) => {
     if(match) {
       jwt.sign({email: user.email, id: user._id, name: user.name, picCollection: user.picCollection}, process.env.JWT_SECRET, {}, (err, token) => {
         if(err) throw err;
-        res.cookie('token', token).json(user)
+        res.cookie('token', token, {
+          httpOnly: true,
+          sameSite: 'none', // or 'strict' depending on your requirements
+          secure: true, // set to true if using HTTPS
+        }).json(user);
       })
     }
     if(!match){
@@ -81,7 +85,6 @@ const loginUser = async (req, res) => {
 const updatePicCollection  = (req, res) => {
   // const canvas = req.body;
   const canvas = req.body;
-  console.log(req.cookies)
 
   const {token} = req.cookies
   if(token) {
@@ -109,7 +112,6 @@ const updatePicCollection  = (req, res) => {
 
 const getProfile = (req, res) => {
   const {token} = req.cookies;
-  console.log(req);
   if(token) {
     jwt.verify(token, process.env.JWT_SECRET, {}, async(err, user) => {
       if(err) throw err;
