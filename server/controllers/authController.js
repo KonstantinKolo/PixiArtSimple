@@ -142,14 +142,7 @@ const getProfile = (req, res) => {
       res.json(user)
     })
   } else {
-    const user = {
-      name: 'tester',
-      email: 'test@gmail.com',
-      password: 'test',
-      picCollection:[],
-
-    }
-    res.json(user);
+    res.json(null);
   }
 }
 
