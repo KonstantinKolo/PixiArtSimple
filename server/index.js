@@ -6,6 +6,11 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 
+app.use(cors({
+  credentials:true,
+  origin: 'https://pixiartsimple.netlify.app'
+}));
+
 // database connection
 mongoose.connect(process.env.MONGO_URL)
 .then(() => console.log('Database Connected'))
