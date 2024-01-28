@@ -7,7 +7,7 @@ const { test, registerUser, loginUser, getProfile, updatePicCollection} = requir
 router.use(
   cors({
     credentials: true,
-    // origin: 'https://pixiartsimple.netlify.app/'
+    origin: 'https://pixiartsimple.netlify.app/login'
   })
 )
 
