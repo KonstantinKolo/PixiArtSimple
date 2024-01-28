@@ -10,7 +10,7 @@ export default function Login() {
     email:'',
     password:''
   })
-  axios.defaults.url = 'https://pixi-art-simple.onrender.com';
+  axios.defaults.baseURL = 'https://pixi-art-simple.onrender.com';
 
   const loginUser = async (e) => {
     e.preventDefault();
