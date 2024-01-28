@@ -81,6 +81,7 @@ const loginUser = async (req, res) => {
 const updatePicCollection  = (req, res) => {
   // const canvas = req.body;
   const canvas = req.body;
+  console.log(req.cookies)
 
   const {token} = req.cookies
   if(token) {
@@ -107,8 +108,8 @@ const updatePicCollection  = (req, res) => {
 
 
 const getProfile = (req, res) => {
-  const {token} = req.cookies
-  console.log(token)
+  const {token} = req.cookies;
+  console.log(req);
   if(token) {
     jwt.verify(token, process.env.JWT_SECRET, {}, async(err, user) => {
       if(err) throw err;
