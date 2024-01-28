@@ -19,5 +19,5 @@ app.use(express.urlencoded({extended: false}));
 
 app.use('/', require('./routes/authRoutes'))
 
-const PORT = process.env.PORT || 8000;
+const PORT = 'https://pixi-art-simple.onrender.com';
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
