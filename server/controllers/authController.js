@@ -49,7 +49,6 @@ const registerUser = async (req, res) => {
 
 // Login Endpoint
 const loginUser = async (req, res) => {
-  console.log('TEST')
   try{
     const { email, password } = req.body;
 
@@ -104,34 +103,12 @@ const updatePicCollection  = (req, res) => {
   } else {
     res.json(null);
   }
-
-
-
-
-  // const canvas = ['1','2']
-  // console.log(canvas)
-  // const {token} = req.cookies
-  // if(token) {
-  //   jwt.verify(token, process.env.JWT_SECRET, {}, async(err, user) => {
-  //     if(err) throw err;
-  //     // user.picCollection[picCollection.lenght - 1] = canvas;
-  //     user.picCollection = canvas;
-  //     await user.save;
-  //     jwt.sign({email: user.email, id: user._id, name: user.name, picCollection: user.picCollection}, process.env.JWT_SECRET, {}, (err, token) => {
-  //       console.log("HEY ")
-  //       if(err) throw err;
-  //       // console.log(user);
-  //       // res.cookie('token', token).json(user)
-  //     })
-  //   })
-    
-  // } else {
-  //   res.json(null);
-  // }
 }
+
 
 const getProfile = (req, res) => {
   const {token} = req.cookies
+  console.log(token)
   if(token) {
     jwt.verify(token, process.env.JWT_SECRET, {}, async(err, user) => {
       if(err) throw err;
