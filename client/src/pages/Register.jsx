@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from "react-router-dom";
@@ -78,17 +78,22 @@ export default function Register() {
         );
 
         // Set the URL of the cropped image as the icon URL
-        setIconUrl(canvas.toDataURL());
+        const icon = canvas.toDataURL();
+        setIconUrl(icon);
 
         // Post the pfp to the database
-        setData({...data, profilePicture:iconUrl})
-
+        setData((prevData) => ({ ...prevData, profilePicture: icon }));
+        // console.log(data);
       };
     };
 
     // Read the file as a data URL
     reader.readAsDataURL(file);
   };
+
+  useEffect(() => {
+    console.log(data); // Log the updated state
+  }, [data]);
 
 
   return (
