@@ -9,17 +9,19 @@ export default function Register() {
   const [data, setData] = useState({
     name: '',
     email: '',
-    password: ''
+    password: '',
+    picCollection: [],
+    profilePicture: '',
   })
 
   axios.defaults.baseURL = 'https://pixi-art-simple.onrender.com';
 
   const registerUser = async (e) => {
     e.preventDefault();
-    const {name, email, password} = data
+    const {name, email, password, picCollection, profilePicture} = data
     try{
       const {data} = await axios.post('/register', {
-        name, email, password
+        name, email, password, picCollection, profilePicture
       })
       if(data.error){
         toast.error(data.error)
