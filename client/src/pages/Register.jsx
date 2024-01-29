@@ -12,6 +12,8 @@ export default function Register() {
     password: ''
   })
 
+  axios.defaults.baseURL = 'https://pixi-art-simple.onrender.com';
+
   const registerUser = async (e) => {
     e.preventDefault();
     const {name, email, password} = data
