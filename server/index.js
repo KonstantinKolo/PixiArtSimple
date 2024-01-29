@@ -23,8 +23,9 @@ app.use(cookieParser());
 app.use(express.urlencoded({extended: false}));
 
 // Increase payload limit (adjust the limit as needed)
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(bodyParser.json({limit: '50mb', extended: true}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
+app.use(bodyParser.text({ limit: '200mb' }));
 
 app.use('/', require('./routes/authRoutes'))
 
