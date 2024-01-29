@@ -11,7 +11,7 @@ import DashBoard from './pages/DashBoard'
 import DrawingPage from './pages/DrawingPage'
 import CreationMenu from './pages/CreationMenu'
 
-axios.defaults.baseURL = 'http://localhost:8000'
+axios.defaults.baseURL = 'https://pixi-art-simple.onrender.com';
 axios.defaults.withCredentials = true;
 
 function App() {

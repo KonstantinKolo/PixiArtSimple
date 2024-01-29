@@ -14,7 +14,7 @@ export default function Register() {
     profilePicture: '',
   })
 
-  axios.defaults.baseURL = 'https://pixi-art-simple.onrender.com';
+  // axios.defaults.baseURL = 'https://pixi-art-simple.onrender.com';
 
   const registerUser = async (e) => {
     e.preventDefault();

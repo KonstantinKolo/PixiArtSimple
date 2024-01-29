@@ -10,15 +10,17 @@ export default function Login() {
     email:'',
     password:''
   })
-  axios.defaults.baseURL = 'https://pixi-art-simple.onrender.com';
+  // axios.defaults.baseURL = 'https://pixi-art-simple.onrender.com';
 
   const loginUser = async (e) => {
     e.preventDefault();
     const {email, password} = data
     try{
-      const {data} = await axios.post('/login', {
+      const { data } = await axios.post('/login', {
         email,
         password
+      }, {
+        withCredentials: true
       });
       if(data.error){
         toast.error(data.error)
