@@ -12,7 +12,6 @@ const test = (req, res) => {
 const registerUser = async (req, res) => {
   try{
     const {name, email, password,picCollection, profilePicture} = req.body;
-    console.log(profilePicture);
     // Check if name was entered
     if(!name){
       return res.json({
