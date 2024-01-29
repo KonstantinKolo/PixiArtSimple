@@ -60,36 +60,53 @@ export default function Register() {
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
 
-        const size = Math.min(img.width, img.height);
-        canvas.width = size;
-        canvas.height = size;
+         // Calculate the square size
+         const size = Math.min(img.width, img.height, '150px');
+         canvas.width = size;
+         canvas.height = size;
+        // Set the URL of the cropped image as the icon URL
+        
+        const aspectRatio = img.width / img.height;
+        let newWidth = 150;
+        let newHeight = 150;
+        
+        if (aspectRatio > 1) {
+          newHeight = Math.min(150, img.height);
+          newWidth = Math.round(newHeight * aspectRatio);
+        } else {
+          newWidth = Math.min(150, img.width);
+          newHeight = Math.round(newWidth / aspectRatio);
+        }
 
-        // Crop the image to a square
-        context.drawImage(
-          img,
-          (img.width - size) / 2,
-          (img.height - size) / 2,
-          size,
-          size,
-          0,
-          0,
-          size,
-          size
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+        context.drawImage(img, 0, 0, newWidth, newHeight);
+        // Convert the canvas to a base64-encoded string
+        canvas.toBlob(
+          (blob) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(blob);
+            
+            reader.onloadend = () => {
+              resolve(reader.result);
+            };
+          },
+          file.type,
+          0.8
         );
 
-        // Set the URL of the cropped image as the icon URL
+
         const icon = canvas.toDataURL();
-        const compressedImage = await CompressAndResizeImage(file, 150, 150, 0.8);
-        setIconUrl(compressedImage);
-
+        setIconUrl(icon);
+        
         // Post the pfp to the database
-        setData((prevData) => ({ ...prevData, profilePicture: compressedImage }));
-        // console.log(data);
+        setData((prevData) => ({ ...prevData, profilePicture: icon }));
+        console.log(data);
+        };
       };
-    };
-
-    // Read the file as a data URL
-    reader.readAsDataURL(file);
+      
+      // Read the file as a data URL
+      reader.readAsDataURL(file);
   };
 
   useEffect(() => {
