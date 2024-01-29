@@ -11,7 +11,8 @@ const test = (req, res) => {
 //Register end point
 const registerUser = async (req, res) => {
   try{
-    const {name, email, password} = req.body;
+    const {name, email, password, profilePicture} = req.body;
+    console.log(profilePicture);
     // Check if name was entered
     if(!name){
       return res.json({
@@ -34,10 +35,11 @@ const registerUser = async (req, res) => {
 
     const hashedPassword = await hashPassword(password)
     const user = await User.create({
-      name,
-      email,
+      name: name,
+      email: email,
       password: hashedPassword,
       picCollection:[],
+      profilePicture: profilePicture,
     })
 
     return res.json(user)
@@ -63,7 +65,7 @@ const loginUser = async (req, res) => {
     // Check if passwords match
     const match = await comparePasswords(password, user.password)
     if(match) {
-      jwt.sign({email: user.email, id: user._id, name: user.name, picCollection: user.picCollection}, process.env.JWT_SECRET, {}, (err, token) => {
+      jwt.sign({email: user.email, id: user._id, name: user.name, picCollection: user.picCollection, profilePicture: user.profilePicture}, process.env.JWT_SECRET, {}, (err, token) => {
         if(err) throw err;
         res.cookie('token', token, {
           httpOnly: true,

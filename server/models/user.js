@@ -8,7 +8,8 @@ const userSchema = new Schema({
     unique: true
   },
   password: String,
-  picCollection: Array
+  picCollection: Array,
+  profilePicture: String
 })
 
 const UserModel = mongoose.model('User', userSchema);
