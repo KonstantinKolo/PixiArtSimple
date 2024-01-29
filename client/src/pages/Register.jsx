@@ -56,7 +56,7 @@ export default function Register() {
       const img = new Image();
       img.src = e.target.result;
 
-      img.onload = () => {
+      img.onload = async() => {
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
 
@@ -79,10 +79,11 @@ export default function Register() {
 
         // Set the URL of the cropped image as the icon URL
         const icon = canvas.toDataURL();
-        setIconUrl(icon);
+        const compressedImage = await CompressAndResizeImage(file, 150, 150, 0.8);
+        setIconUrl(compressedImage);
 
         // Post the pfp to the database
-        setData((prevData) => ({ ...prevData, profilePicture: icon }));
+        setData((prevData) => ({ ...prevData, profilePicture: compressedImage }));
         // console.log(data);
       };
     };
