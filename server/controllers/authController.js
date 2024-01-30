@@ -51,7 +51,6 @@ const registerUser = async (req, res) => {
 // Login Endpoint
 const loginUser = async (req, res) => {
   try{
-    console.log('HEY')
     const { email, password } = req.body;
 
     // Check if user exists
@@ -69,7 +68,6 @@ const loginUser = async (req, res) => {
         if(err) throw err;
         res.cookie('token', token, {
           httpOnly: true,
-          sameSite: 'none', // or 'strict' depending on your requirements
           secure: true, // set to true if using HTTPS
         }).json(user);
       })
