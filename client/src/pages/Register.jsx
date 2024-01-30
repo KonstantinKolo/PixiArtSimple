@@ -101,7 +101,6 @@ export default function Register() {
         
         // Post the pfp to the database
         setData((prevData) => ({ ...prevData, profilePicture: icon }));
-        console.log(data);
         };
       };
       
@@ -110,7 +109,6 @@ export default function Register() {
   };
 
   useEffect(() => {
-    console.log(data); // Log the updated state
   }, [data]);
 
 
