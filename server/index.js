@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGO_URL)
 // middleware
 app.use(cors({
   credentials:true,
-  origin: 'https://pixiartsimple.netlify.app/'
+  origin: 'https://pixiartsimple.netlify.app/login'
 }));
 app.use(express.json());
 app.use(cookieParser());
