@@ -12,6 +12,9 @@ app.use(cors({
   origin: 'https://pixiartsimple.netlify.app'
 }));
 
+// Handle preflight OPTIONS requests globally
+app.options('*', cors())
+
 // database connection
 mongoose.connect(process.env.MONGO_URL)
 .then(() => console.log('Database Connected'))
