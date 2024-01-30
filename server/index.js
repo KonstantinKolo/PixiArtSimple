@@ -7,6 +7,10 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 
+app.use(cors({
+  credentials:true,
+  origin: 'https://pixiartsimple.netlify.app'
+}));
 
 // database connection
 mongoose.connect(process.env.MONGO_URL)
@@ -14,10 +18,6 @@ mongoose.connect(process.env.MONGO_URL)
 .catch((err) => console.log('Database not connected', err))
 
 // middleware
-app.use(cors({
-  credentials:true,
-  origin: 'https://pixiartsimple.netlify.app/login'
-}));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({extended: false}));
