@@ -14,15 +14,14 @@ mongoose.connect(process.env.MONGO_URL)
 .catch((err) => console.log('Database not connected', err))
 
 // middleware
-app.use(express.json());
-app.use(cookieParser());
-app.use(express.urlencoded({extended: false}));
-app.options('*', cors());
-
 app.use(cors({
   credentials:true,
   origin: 'https://pixiartsimple.netlify.app/'
 }));
+app.use(express.json());
+app.use(cookieParser());
+app.use(express.urlencoded({extended: false}));
+
 
 app.use('/', require('./routes/authRoutes'))
 
