@@ -8,12 +8,9 @@ const cookieParser = require('cookie-parser');
 const app = express();
 
 app.use(cors({
-  credentials:true,
+  // credentials:true,
   origin: 'https://pixiartsimple.netlify.app'
 }));
-
-// Handle preflight OPTIONS requests globally
-app.options('*', cors())
 
 // database connection
 mongoose.connect(process.env.MONGO_URL)
