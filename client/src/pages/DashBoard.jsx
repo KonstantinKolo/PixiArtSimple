@@ -5,6 +5,7 @@ import axios from "axios";
 import { refreshed, setRefreshed } from "../components/Navbar";
 import {toast} from 'react-hot-toast'
 import '../App.css'
+import '../CSS/Dashboard.css'
 import { setVis } from "../components/Navbar";
 
 
@@ -13,6 +14,7 @@ export default function DashBoard() {
   const {user} = useContext(UserContext)
 
   const [canvas, setCanvas] = useState();
+  const [pfp, setPfp] = useState();
 
   const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -29,12 +31,12 @@ export default function DashBoard() {
   }
 
   let initialize = false;
-  useEffect(() => {
+  useEffect(async() => {
     if(!initialize){
       setVis(true);
+      const {data} = await axios.get('/profile');
 
-      const displayPicCollection = async() => {
-        const {data} = await axios.get('/profile');
+      const displayPicCollection = () => {
 
         for(let i = 0; i < data.picCollection.length; i++){
           const canvas = data.picCollection[i];
@@ -67,27 +69,14 @@ export default function DashBoard() {
           }
           document.getElementById('wrapper').appendChild(divWrapper);
         }
-
-        // for(let i = 0; i < canvas.length; i++){
-        //   canvas[i] = `rgb(${canvas[i]})`;
-          
-        //   const div = document.createElement('div');
-        //   div.style.backgroundColor = canvas[i];
-        //   div.classList.add('display-square');
-          
-        //   if(helper == 17){
-        //     const p = document.createElement('p');
-        //     p.classList.add('display-p')
-        //     p.innerHTML = '&nbsp'
-        //     divWrapper.appendChild(p);
-        //     helper = 1;
-        //   }
-        //   helper++;
-      
-        //   divWrapper.appendChild(div)
-        // }
       }
+      const displayProfilePicture = () => {
+        const image = data.profilePicture;
+        setPfp(image);
+      }
+
       displayPicCollection();
+      displayProfilePicture();
       initialize = true;
     }
   }, [])
@@ -95,7 +84,10 @@ export default function DashBoard() {
   return (
     <div>
       <h1 className="dash-h1">Dashboard</h1>
-      {!!user && (<h2 className="dash-name">Welcome {user.name}!</h2>)}
+      <div className="data-wrapper">
+        {!!pfp && (<img src={pfp} className="profile-pic"></img>)}
+        {!!user && (<h2 className="dash-name">Welcome {user.name}!</h2>)}
+      </div>
       <div id="wrapper"
       style={{height:'100%', width:'100%', position:''}}
       >
