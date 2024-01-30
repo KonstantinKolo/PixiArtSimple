@@ -10,7 +10,7 @@ export default function Login() {
     email:'',
     password:''
   })
-  // axios.defaults.baseURL = 'https://pixi-art-simple.onrender.com';
+  axios.defaults.baseURL = 'https://pixi-art-simple.onrender.com';
 
   const loginUser = async (e) => {
     e.preventDefault();
@@ -26,6 +26,7 @@ export default function Login() {
         toast.error(data.error)
       } else {
         setData({});
+        toast.success('Login successful. Welcome!')
         navigate('/dashboard')
       }
     } catch (error) {
