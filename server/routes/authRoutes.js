@@ -10,6 +10,7 @@ const { test, registerUser, loginUser, getProfile, updatePicCollection} = requir
 //     origin: 'https://pixiartsimple.netlify.app'
 //   })
 // )
+router.use(cors());
 
 router.get('/', test);
 router.post('/register', registerUser)
