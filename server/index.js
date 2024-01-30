@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const app = express();
 
 app.use(cors({
-  // credentials:true,
+  credentials:true,
   origin: 'https://pixiartsimple.netlify.app'
 }));
 
