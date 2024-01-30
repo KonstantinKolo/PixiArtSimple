@@ -11,6 +11,7 @@ export default function Login() {
     password:''
   })
   // axios.defaults.baseURL = '';
+  axios.defaults.baseURL = 'https://pixi-art-simple.onrender.com';
 
   const loginUser = async (e) => {
     e.preventDefault();

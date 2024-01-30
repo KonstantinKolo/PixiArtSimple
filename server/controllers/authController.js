@@ -51,6 +51,7 @@ const registerUser = async (req, res) => {
 // Login Endpoint
 const loginUser = async (req, res) => {
   try{
+    console.log('HEY')
     const { email, password } = req.body;
 
     // Check if user exists
