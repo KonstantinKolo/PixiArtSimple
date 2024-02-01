@@ -36,7 +36,9 @@ export default function DashBoard() {
     if(!initialize){
       console.log(1);
       setVis(true);
-      const {data} = await axios.get('/profile', email)
+      const { data } = await axios.get('/profile', {
+        data: { email: email }, // replace with the actual email
+      });
 
       const displayPicCollection = () => {
 
