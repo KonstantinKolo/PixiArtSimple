@@ -67,14 +67,16 @@ const loginUser = async (req, res) => {
     const match = await comparePasswords(password, user.password)
     console.log(3);
     if(match) {
-      // jwt.sign({email: user.email, id: user._id, name: user.name, picCollection: user.picCollection, profilePicture: user.profilePicture}, process.env.JWT_SECRET, {}, (err, token) => {
-      //   if(err) throw err;
-      //   res.cookie('token', token, {
-      //     httpOnly: true,
-      //     sameSite: 'none', 
-      //     secure: true, // set to true if using HTTPS
-      //   }).json(user);
-      // })
+      jwt.sign({email: user.email, id: user._id, name: user.name, picCollection: user.picCollection, profilePicture: user.profilePicture}, process.env.JWT_SECRET, {}, (err, token) => {
+        if(err) throw err;
+        res.cookie('token', token 
+        // ,{
+          // httpOnly: true,
+          // sameSite: 'none', 
+          // secure: true, // set to true if using HTTPS
+        // }
+        ).json(user);
+      })
       console.log('hey');
     }
     if(!match){
