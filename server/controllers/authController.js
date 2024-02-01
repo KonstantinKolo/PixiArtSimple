@@ -54,31 +54,28 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     // Check if user exists
-    console.log(1);
     const user = await User.findOne({email});
     if(!user) {
       return res.json({
         error: 'No user found'
       })
     }
-    console.log(2);
 
     // Check if passwords match
     const match = await comparePasswords(password, user.password)
-    console.log(3);
     if(match) {
-      jwt.sign({email: user.email, id: user._id, name: user.name, picCollection: user.picCollection, profilePicture: user.profilePicture}, process.env.JWT_SECRET, {}, (err, token) => {
-        // console.log(4)
-        if(err) throw err;
-        res.cookie('token', token 
-        ,{
-          httpOnly: true,
-          sameSite: 'None', 
-          secure: true, // set to true if using HTTPS
-        }
-        ).json(user);
-      })
-      console.log('hey');
+      // jwt.sign({email: user.email, id: user._id, name: user.name, picCollection: user.picCollection, profilePicture: user.profilePicture}, process.env.JWT_SECRET, {}, (err, token) => {
+      //   // console.log(4)
+      //   if(err) throw err;
+      //   res.cookie('token', token 
+      //   ,{
+      //     httpOnly: true,
+      //     sameSite: 'None', 
+      //     secure: true, // set to true if using HTTPS
+      //   }
+      //   ).json(user);
+      // })
+      return res.json(user);
     }
     if(!match){
       return res.json({
@@ -86,7 +83,6 @@ const loginUser = async (req, res) => {
       })
     }
   } catch (error) { 
-    console.log(5);
     console.log(error);
   }
 }

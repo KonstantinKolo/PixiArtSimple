@@ -3,6 +3,7 @@ import axios from 'axios';
 import {toast} from 'react-hot-toast'
 import {useNavigate} from 'react-router-dom'
 import '../App.css'
+import { email, setEmail } from "../App";
 
 export default function Login() {
   const navigate = useNavigate()
@@ -22,6 +23,8 @@ export default function Login() {
           password,
       })
       console.log(data);
+      console.log(data.email);
+      setEmail(data.email)
       if (data.error) {
         toast.error(data.error);
       } else {
@@ -32,6 +35,7 @@ export default function Login() {
     } catch (error) {
       console.log(error);
     }
+
   }
 
   return (

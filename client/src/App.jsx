@@ -10,11 +10,19 @@ import { UserContextProvider } from '../context/userContext'
 import DashBoard from './pages/DashBoard'
 import DrawingPage from './pages/DrawingPage'
 import CreationMenu from './pages/CreationMenu'
+import { useState } from 'react'
 
 axios.defaults.baseURL = 'https://pixi-art-simple.onrender.com';
 axios.defaults.withCredentials = true;
 
+export let email;
+export let setEmail
+
 function App() {
+  const[em, setEm] = useState();
+  email = em;
+  setEmail = setEm;
+
   return (
     <UserContextProvider>
       <Navbar />
