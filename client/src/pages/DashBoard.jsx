@@ -21,8 +21,9 @@ export default function DashBoard() {
 
   // Get the new name
   const updateName = async() => {
-    await sleep(200);
-    axios.get('/profile').then(({data}) => {
+    await sleep(2000);
+    axios.post('/profile', {email: email}).then(({data}) => {
+      console.log('UPDATENAME : ' + data);
       setUserExp(data);
     })
   }
@@ -34,7 +35,6 @@ export default function DashBoard() {
   let initialize = false;
   useEffect(async() => {
     if(!initialize){
-      console.log(1);
       const { data } = await axios.post('/profile', {
         email: email
       });
@@ -63,7 +63,6 @@ export default function DashBoard() {
               div.classList.add('display-square');
               divWrapper.appendChild(div)
               sqHelper++;
-              console.log();
             }
             
             const p = document.createElement('p');

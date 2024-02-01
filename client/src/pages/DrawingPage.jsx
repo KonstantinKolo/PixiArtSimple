@@ -91,11 +91,4 @@ function DrawingPage() {
   );
 }
 
-// function DrawingPage() {
-//   return (
-//     <div>DrawingPage</div>
-//   )
-// }
-
-
 export default DrawingPage;

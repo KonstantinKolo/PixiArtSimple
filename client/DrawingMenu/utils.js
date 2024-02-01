@@ -73,17 +73,4 @@ export const getPic = async() => {
     outputArr: outputArr,
     email: email
   });
-  // const element = document.getElementsByClassName(elementId)[0];
-
-  // if(!element){
-  //   return;
-  // }
-  // html2canvas(element, {
-  //   backgroundColor: backgroundColor,
-  // }).then(async(canvas) => {
-  // }).catch(err => {
-  //   console.error('We cannot take the screenshot at the moment.')
-  //   console.error(err);
-  // })
-  // // return -1;
 }

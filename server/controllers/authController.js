@@ -25,7 +25,7 @@ const registerUser = async (req, res) => {
       })
     }
     // Check email
-    const exist = await User.findOne({email});
+    const exist = await User.findOne({email:email});
     if(exist) {
       return res.json({
         error: 'Email is taken already'
@@ -54,7 +54,7 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     // Check if user exists
-    const user = await User.findOne({email});
+    const user = await User.findOne({email:email});
     if(!user) {
       return res.json({
         error: 'No user found'
@@ -64,17 +64,6 @@ const loginUser = async (req, res) => {
     // Check if passwords match
     const match = await comparePasswords(password, user.password)
     if(match) {
-      // jwt.sign({email: user.email, id: user._id, name: user.name, picCollection: user.picCollection, profilePicture: user.profilePicture}, process.env.JWT_SECRET, {}, (err, token) => {
-      //   // console.log(4)
-      //   if(err) throw err;
-      //   res.cookie('token', token 
-      //   ,{
-      //     httpOnly: true,
-      //     sameSite: 'None', 
-      //     secure: true, // set to true if using HTTPS
-      //   }
-      //   ).json(user);
-      // })
       return res.json(user);
     }
     if(!match){
@@ -93,7 +82,7 @@ const updatePicCollection  = async(req, res) => {
   
   if(email) {
 
-    const dbUser = await User.findOne(email);
+    const dbUser = await User.findOne({email: email});
     const update = dbUser.picCollection;
     update[update.length] = canvas;
     
@@ -120,10 +109,10 @@ const getProfile = async(req, res) => {
     
     const dbUser = await User.findOne({email: email});
     // user.picCollection = dbUser.picCollection;
-    res.json(dbUser)
+    return res.json(dbUser)
     // })
   } else {
-    res.json(null);
+    return res.json(null);
   }
 }
 
