@@ -68,9 +68,9 @@ const loginUser = async (req, res) => {
     console.log(3);
     if(match) {
       jwt.sign({email: user.email, id: user._id, name: user.name, picCollection: user.picCollection, profilePicture: user.profilePicture}, process.env.JWT_SECRET, {}, (err, token) => {
-        console.log(4)
+        // console.log(4)
         if(err) throw err;
-        res.cookie('token', token 
+        return res.cookie('token', token 
         ,{
           httpOnly: true,
           sameSite: 'None', 
@@ -81,7 +81,7 @@ const loginUser = async (req, res) => {
       console.log('hey');
     }
     if(!match){
-      res.json({
+      return res.json({
         error: 'Passwords do not match'
       })
     }
