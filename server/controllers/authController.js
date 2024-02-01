@@ -111,8 +111,8 @@ const updatePicCollection  = async(req, res) => {
 
 
 const getProfile = async(req, res) => {
-  console.log(req.query);
-  const email = req.query.email;
+  console.log(req.body);
+  const email = req.body;
   if(email) {
     // jwt.verify(token, process.env.JWT_SECRET, {}, async(err, user) => {
     //   if(err) throw err;

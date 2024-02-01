@@ -11,11 +11,7 @@ export function UserContextProvider({children}){
   
   useEffect(() => {
     if(!user){
-      axios.get('/profile', {
-        params: {
-          email: email
-        }
-      })
+      axios.post('/profile', email)
         .then(({ data }) => {
           setUser(data);
         })

@@ -15,6 +15,6 @@ router.get('/', test);
 router.post('/register', registerUser)
 router.post('/login', loginUser) 
 router.post('/updatePic', updatePicCollection)
-router.get('/profile', getProfile)
+router.post('/profile', getProfile)
 
 module.exports = router;
