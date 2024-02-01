@@ -7,6 +7,7 @@ import {toast} from 'react-hot-toast'
 import '../App.css'
 import '../CSS/Dashboard.css'
 import { setVis } from "../components/Navbar";
+import { email } from "../App";
 
 
 export default function DashBoard() {
@@ -33,8 +34,13 @@ export default function DashBoard() {
   let initialize = false;
   useEffect(async() => {
     if(!initialize){
+      console.log(1);
       setVis(true);
-      const {data} = await axios.get('/profile');
+      const {data} = await axios.get('/profile', {
+        params: {
+          email: email
+        }
+      })
 
       const displayPicCollection = () => {
 

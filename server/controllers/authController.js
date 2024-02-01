@@ -111,14 +111,14 @@ const updatePicCollection  = async(req, res) => {
 
 
 const getProfile = async(req, res) => {
-  const emailInput = req.body;
-  console.log(emailInput);
-  if(emailInput) {
+  const email = req.body;
+  console.log(email);
+  if(email) {
     // jwt.verify(token, process.env.JWT_SECRET, {}, async(err, user) => {
     //   if(err) throw err;
     // const email = user.email
     
-    const dbUser = await User.findOne(emailInput);
+    const dbUser = await User.findOne(email);
     // user.picCollection = dbUser.picCollection;
     res.json(dbUser)
     // })
