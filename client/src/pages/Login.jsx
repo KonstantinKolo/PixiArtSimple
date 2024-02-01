@@ -16,7 +16,7 @@ export default function Login() {
     const {email, password} = data
     try {
       const { data } = await axios.post(
-        'https://pixi-art-simple.onrender.com/login',
+        '/login',
         {
           email,
           password,
