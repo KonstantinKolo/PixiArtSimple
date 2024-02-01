@@ -8,12 +8,14 @@
   background-color: coral;
   padding: 5px;
   padding-left: 20px;
+  align-items: center;
+  justify-content: center;
 }
 .profile-pic{
   border: 2px solid black
 }
 .dash-name{
-  vertical-align: middle;
+  
   margin-left: 20px;
   color: navy;
 }
