@@ -23,6 +23,7 @@ export default function Login() {
           password,
       })
       setEmail(data.email)
+      console.log(email);
       if (data.error) {
         toast.error(data.error);
       } else {
