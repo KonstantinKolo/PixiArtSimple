@@ -54,15 +54,18 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     // Check if user exists
+    console.log(1);
     const user = await User.findOne({email});
     if(!user) {
       return res.json({
         error: 'No user found'
       })
     }
+    console.log(2);
 
     // Check if passwords match
     const match = await comparePasswords(password, user.password)
+    console.log(3);
     if(match) {
       // jwt.sign({email: user.email, id: user._id, name: user.name, picCollection: user.picCollection, profilePicture: user.profilePicture}, process.env.JWT_SECRET, {}, (err, token) => {
       //   if(err) throw err;
@@ -80,6 +83,7 @@ const loginUser = async (req, res) => {
       })
     }
   } catch (error) { 
+    console.log(4);
     console.log(error);
   }
 }

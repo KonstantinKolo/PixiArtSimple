@@ -20,12 +20,7 @@ export default function Login() {
         {
           email,
           password,
-        },
-        {
-          withCredentials: true,
-        }
-      );
-    
+      })
       if (data.error) {
         toast.error(data.error);
       } else {
