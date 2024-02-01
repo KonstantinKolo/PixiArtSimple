@@ -35,9 +35,9 @@ export default function DashBoard() {
   useEffect(async() => {
     if(!initialize){
       console.log(1);
-      setVis(true);
-      console.log(email);
-      const { data } = await axios.post('/profile',email);
+      const { data } = await axios.post('/profile', {
+        email: email
+      });
       console.log(data);
 
       const displayPicCollection = () => {
