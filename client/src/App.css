@@ -383,14 +383,6 @@ a:visited{
   font-family: Lucida;
   color: #f977c1;
 }
-.dash-name{
-  position: absolute;
-  top:120px;
-  left:0.5%;
-  width: 99%;
-  color:lightsalmon;
-  border: 1px black dashed;
-}
 .display-square{
   height: 12px;
   width: 12px;

@@ -1,0 +1,14 @@
+.data-wrapper{
+  position: absolute;
+  top:120px;
+  left:0.5%;
+  width: 99%;
+  border: 1px black dashed;
+  display:inline-block;
+}
+.profile-pic{
+  border: 2px solid black
+}
+.dash-name{
+  color:lightsalmon;
+}
