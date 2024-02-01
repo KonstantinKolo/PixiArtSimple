@@ -4,7 +4,8 @@
   left:0.5%;
   width: 99%;
   border: 1px black dashed;
-  display:inline-block;
+  display:flex;
+  background-color: coral;
 }
 .profile-pic{
   border: 2px solid black
