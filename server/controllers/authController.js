@@ -87,27 +87,22 @@ const loginUser = async (req, res) => {
   }
 }
 
-const updatePicCollection  = (req, res) => {
-  // const canvas = req.body;
-  const canvas = req.body;
+const updatePicCollection  = async(req, res) => {
+  const {canvas,email} = req.body;
+  console.log(email + '||' + canvas);
+  
+  if(email) {
 
-  const {token} = req.cookies
-  if(token) {
-    jwt.verify(token, process.env.JWT_SECRET, {}, async(err, user) => {
-      if(err) throw err;
+    const dbUser = await User.findOne(email);
+    const update = dbUser.picCollection;
+    update[update.length] = canvas;
+    
+    if(update.length > 9){
+      update.shift();
+    }
 
-      const email = user.email
-      const dbUser = await User.findOne({email});
-      const update = dbUser.picCollection;
-      update[update.length] = canvas;
-      
-      if(update.length > 9){
-        update.shift();
-      }
-
-      await User.findOneAndUpdate({email:email}, {picCollection: update}, {
-        new: true
-      })
+    await User.findOneAndUpdate({email:email}, {picCollection: update}, {
+      new: true
     })
   } else {
     res.json(null);
@@ -115,17 +110,18 @@ const updatePicCollection  = (req, res) => {
 }
 
 
-const getProfile = (req, res) => {
-  const {token} = req.cookies;
-  if(token) {
-    jwt.verify(token, process.env.JWT_SECRET, {}, async(err, user) => {
-      if(err) throw err;
-
-      const email = user.email
-      const dbUser = await User.findOne({email});
-      user.picCollection = dbUser.picCollection;
-      res.json(user)
-    })
+const getProfile = async(req, res) => {
+  const emailInput = req.body;
+  console.log(emailInput);
+  if(emailInput) {
+    // jwt.verify(token, process.env.JWT_SECRET, {}, async(err, user) => {
+    //   if(err) throw err;
+    // const email = user.email
+    
+    const dbUser = await User.findOne(emailInput);
+    // user.picCollection = dbUser.picCollection;
+    res.json(dbUser)
+    // })
   } else {
     res.json(null);
   }

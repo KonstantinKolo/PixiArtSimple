@@ -3,6 +3,7 @@ import { numberOfDMSet } from "./DrawingItems/Demagnify";
 import { usingMagSet } from "./DrawingItems/Magnify";
 import axios from "axios";
 import { canvasWidth, canvasHeight } from "../src/pages/CreationMenu";
+import { email, setEmail } from "../src/App";
 
 export const takeScreenShot = (elementId, fileName, fileType, backgroundColor='#000000') => {
   let colectionSquare  = document.querySelectorAll('.square');
@@ -68,7 +69,7 @@ export const getPic = async() => {
   }
   usingMagSet(false);
 
-  await axios.post('./updatePic', outputArr)
+  await axios.post('./updatePic', {outputArr,email});
   // const element = document.getElementsByClassName(elementId)[0];
 
   // if(!element){

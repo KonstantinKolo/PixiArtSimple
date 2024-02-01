@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useState, useEffect } from "react";
+import { email, setEmail } from "../src/App";
 
 export let setUserExp;
 export const UserContext = createContext({})
@@ -10,7 +11,7 @@ export function UserContextProvider({children}){
   
   useEffect(() => {
     if(!user){
-      axios.get('/profile').then(({data}) => {
+      axios.get('/profile', email).then(({data}) => {
         setUser(data);
       })
     }
