@@ -11,9 +11,18 @@ export function UserContextProvider({children}){
   
   useEffect(() => {
     if(!user){
-      axios.get('/profile', email).then(({data}) => {
-        setUser(data);
+      axios.get('/profile', {
+        params: {
+          email: email
+        }
       })
+        .then(({ data }) => {
+          setUser(data);
+        })
+        .catch(error => {
+          // Handle errors
+          console.error('Error fetching profile:', error);
+        });
     }
   }, [])
 

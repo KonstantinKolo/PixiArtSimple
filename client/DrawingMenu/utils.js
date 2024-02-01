@@ -69,7 +69,10 @@ export const getPic = async() => {
   }
   usingMagSet(false);
 
-  await axios.post('./updatePic', {outputArr,email});
+  await axios.post('./updatePic', {
+    outputArr: outputArr,
+    email: email
+  });
   // const element = document.getElementsByClassName(elementId)[0];
 
   // if(!element){
