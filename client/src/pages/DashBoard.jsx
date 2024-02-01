@@ -36,6 +36,7 @@ export default function DashBoard() {
     if(!initialize){
       console.log(1);
       setVis(true);
+      console.log(email);
       const { data } = await axios.get('/profile', {
         data: { email: email }, // replace with the actual email
       });
