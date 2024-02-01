@@ -118,7 +118,7 @@ const getProfile = async(req, res) => {
     //   if(err) throw err;
     // const email = user.email
     
-    const dbUser = await User.findOne(email);
+    const dbUser = await User.findOne({email: email});
     // user.picCollection = dbUser.picCollection;
     res.json(dbUser)
     // })
