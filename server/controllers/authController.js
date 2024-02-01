@@ -70,7 +70,7 @@ const loginUser = async (req, res) => {
       jwt.sign({email: user.email, id: user._id, name: user.name, picCollection: user.picCollection, profilePicture: user.profilePicture}, process.env.JWT_SECRET, {}, (err, token) => {
         // console.log(4)
         if(err) throw err;
-        return res.cookie('token', token 
+        res.cookie('token', token 
         ,{
           httpOnly: true,
           sameSite: 'None', 
