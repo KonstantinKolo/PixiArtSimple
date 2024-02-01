@@ -68,13 +68,14 @@ const loginUser = async (req, res) => {
     console.log(3);
     if(match) {
       jwt.sign({email: user.email, id: user._id, name: user.name, picCollection: user.picCollection, profilePicture: user.profilePicture}, process.env.JWT_SECRET, {}, (err, token) => {
+        console.log(4)
         if(err) throw err;
         res.cookie('token', token 
-        // ,{
-          // httpOnly: true,
-          // sameSite: 'none', 
-          // secure: true, // set to true if using HTTPS
-        // }
+        ,{
+          httpOnly: true,
+          sameSite: 'None', 
+          secure: true, // set to true if using HTTPS
+        }
         ).json(user);
       })
       console.log('hey');
@@ -85,7 +86,7 @@ const loginUser = async (req, res) => {
       })
     }
   } catch (error) { 
-    console.log(4);
+    console.log(5);
     console.log(error);
   }
 }
