@@ -89,7 +89,7 @@ export default function DashBoard() {
       <h1 className="dash-h1">Dashboard</h1>
       <div className="data-wrapper">
         {!!pfp && (<img src={pfp} className="profile-pic"></img>)}
-        {!!user && (<h2 className="dash-name">Welcome {user.name}!</h2>)}
+        {!!user && (<h1 className="dash-name">Welcome {user.name}!</h1>)}
       </div>
       <div id="wrapper"
       style={{height:'100%', width:'100%', position:''}}
