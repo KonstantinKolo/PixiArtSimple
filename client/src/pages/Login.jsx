@@ -14,17 +14,24 @@ export default function Login() {
   const loginUser = async (e) => {
     e.preventDefault();
     const {email, password} = data
-    try{
-      const { data } = await axios.post('https://pixi-art-simple.onrender.com/login', {
-        email,
-        password
-      });
-      if(data.error){
-        toast.error(data.error)
+    try {
+      const { data } = await axios.post(
+        'https://pixi-art-simple.onrender.com/login',
+        {
+          email,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+    
+      if (data.error) {
+        toast.error(data.error);
       } else {
         setData({});
-        toast.success('Login successful. Welcome!')
-        navigate('/dashboard')
+        toast.success('Login successful. Welcome!');
+        navigate('/dashboard');
       }
     } catch (error) {
       console.log(error);
