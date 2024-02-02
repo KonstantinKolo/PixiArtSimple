@@ -38,7 +38,8 @@ export default function Register() {
         }
       };
       convertToBase64();
-      setData((prevData) => ({ ...prevData, profilePicture: pfpBase64 }));
+      console.log(pfpBase64);
+      setData((data) => ({ ...data, profilePicture: pfpBase64 }));
       console.log(data);
     }
 
