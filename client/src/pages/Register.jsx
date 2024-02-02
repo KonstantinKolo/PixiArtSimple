@@ -6,7 +6,6 @@ import '../CSS/Register.css';
 import '../App.css'
 import pfp from '../../public/profilePicture.png'
 import Modal from 'react-modal'
-import RNFS from 'react-native-fs';
 
 export default function Register() {
   const navigate = useNavigate();
@@ -25,11 +24,18 @@ export default function Register() {
     e.preventDefault();
     
     if(!data.profilePicture){
-      RNFS.readFile(this.state.imagePath, 'base64')
-      .then(res =>{
-        console.log(res);
-        setData((data) => ({ ...data, profilePicture: res }));
-      });
+      const convertToBase64 = () => {
+        const reader = new FileReader()
+    
+        reader.readAsDataURL(selectedFile)
+    
+        reader.onload = () => {
+          console.log('called: ', reader)
+          setPfpBase64(reader.result)
+        }
+      }
+      convertToBase64()
+      setData((data) => ({ ...data, profilePicture: pfpBase64 }));
       console.log(data);
     }
 
