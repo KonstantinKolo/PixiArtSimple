@@ -17,8 +17,6 @@ export default function Register() {
     profilePicture: '',
   })
 
-  // axios.defaults.baseURL = 'https://pixi-art-simple.onrender.com';
-
   const [loading, setLoading] = useState(false); // Added loading state
   const registerUser = async (e) => {
     e.preventDefault();
@@ -52,6 +50,7 @@ export default function Register() {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
+    console.log(file);
     setSelectedFile(file);
 
     // Set the uploaded image as the icon
@@ -118,8 +117,8 @@ export default function Register() {
   };
 
   useEffect(() => {
-  }, [data]);
-
+    handleFileChange();
+  }, []);
 
   return (
     <div className="register">
@@ -143,7 +142,7 @@ export default function Register() {
         <div class="text">
             <span>Click to upload profile picture</span>
         </div>
-        <input id="file" type="file" onChange={handleFileChange}/>
+        <input id="file" type="file" onChange={handleFileChange} />
       </label>
       <h1 className='register-h1' style={{marginTop:'0', marginBottom:'70px'}}>REGISTER</h1>
 
