@@ -60,7 +60,7 @@ export default function Login() {
         className="loading-modal"
         overlayClassName="loading-overlay"
       >
-        <h2>Loading...</h2>
+        <h2 style={{color:black}}>Loading...</h2>
       </Modal>
     </div>
   )
