@@ -3,7 +3,9 @@ import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from "react-router-dom";
 import '../CSS/Register.css';
+import '../App.css'
 import pfp from '../../public/profilePicture.png'
+import Modal from 'react-modal'
 
 export default function Register() {
   const navigate = useNavigate();
@@ -17,12 +19,14 @@ export default function Register() {
 
   // axios.defaults.baseURL = 'https://pixi-art-simple.onrender.com';
 
+  const [loading, setLoading] = useState(false); // Added loading state
   const registerUser = async (e) => {
     e.preventDefault();
     
     const {name, email, password, picCollection, profilePicture} = data
 
     try{
+      setLoading(true);
       const {data} = await axios.post('/register', {
         name, email, password, picCollection, profilePicture
       })
@@ -35,6 +39,8 @@ export default function Register() {
       }
     } catch(error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -150,6 +156,15 @@ export default function Register() {
         <p className="reg-pars"></p>
         <button className='submit-btn' type='submit'>Submit</button>
       </form>
+
+      <Modal
+        isOpen={loading}
+        contentLabel="Loading Modal"
+        className="loading-modal"
+        overlayClassName="loading-overlay"
+      >
+        <h2 style={{color:'black'}}>Loading...</h2>
+      </Modal>
     </div>
   )
 }
