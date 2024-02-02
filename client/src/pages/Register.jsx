@@ -23,7 +23,7 @@ export default function Register() {
   const registerUser = async (e) => {
     e.preventDefault();
     
-    if(!profilePicture){
+    if(!data.profilePicture){
       const convertToBase64 = async () => {
         try {
           const response = await fetch(pfp);
@@ -39,6 +39,7 @@ export default function Register() {
       };
       convertToBase64();
       setData((prevData) => ({ ...prevData, profilePicture: pfpBase64 }));
+      console.log(data);
     }
 
     const {name, email, password, picCollection, profilePicture} = data
