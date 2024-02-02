@@ -16,12 +16,33 @@ export default function Register() {
     picCollection: [],
     profilePicture: '',
   })
-
+  const [pfpBase64, setPfpBase64] = useState('');
   const [loading, setLoading] = useState(false); // Added loading state
+
+
   const registerUser = async (e) => {
     e.preventDefault();
     
+    if(!profilePicture){
+      const convertToBase64 = async () => {
+        try {
+          const response = await fetch(pfp);
+          const blob = await response.blob();
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            setPfpBase64(reader.result);
+          };
+          reader.readAsDataURL(blob);
+        } catch (error) {
+          console.error('Error converting image to base64:', error);
+        }
+      };
+      convertToBase64();
+      setData((prevData) => ({ ...prevData, profilePicture: pfpBase64 }));
+    }
+
     const {name, email, password, picCollection, profilePicture} = data
+
 
     try{
       setLoading(true);
@@ -115,10 +136,6 @@ export default function Register() {
       // Read the file as a data URL
       reader.readAsDataURL(file);
   };
-
-  useEffect(() => {
-    handleFileChange(<img src={pfp} alt="Uploaded Icon" style={{ maxWidth: '150px', maxHeight: '150px' }}/>);
-  }, []);
 
   return (
     <div className="register">
