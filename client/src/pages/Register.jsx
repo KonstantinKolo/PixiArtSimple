@@ -117,7 +117,7 @@ export default function Register() {
   };
 
   useEffect(() => {
-    handleFileChange();
+    handleFileChange(<img src={pfp} alt="Uploaded Icon" style={{ maxWidth: '150px', maxHeight: '150px' }}/>);
   }, []);
 
   return (
