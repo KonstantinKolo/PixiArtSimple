@@ -8,6 +8,7 @@ import '../App.css'
 import '../CSS/Dashboard.css'
 import { setVis } from "../components/Navbar";
 import { email } from "../App";
+import profPic from '../../public/profilePicture.png';
 
 
 export default function DashBoard() {
@@ -75,8 +76,13 @@ export default function DashBoard() {
         }
       }
       const displayProfilePicture = () => {
-        const image = data.profilePicture;
-        setPfp(image);
+        if(!data.profilePicture){
+          setPfp(profPic);
+        }
+        else{
+          const image = data.profilePicture;
+          setPfp(image);
+        }
       }
       
       displayPicCollection();
