@@ -33,16 +33,17 @@ export default function DashBoard() {
   }
 
   let initialize = false;
-  useEffect(async() => {
-    if(!initialize){
-      const { data } = await axios.post('/profile', {
-        email: email
-      });
-      console.log(data);
-
-      const displayPicCollection = () => {
-
-        for(let i = 0; i < data.picCollection.length; i++){
+  useEffect(() => {
+    async function fetchData () {
+      if(!initialize){
+        const { data } = await axios.post('/profile', {
+          email: email
+        });
+        console.log(data);
+        
+        const displayPicCollection = () => {
+          
+          for(let i = 0; i < data.picCollection.length; i++){
           const canvas = data.picCollection[i];
           const width = canvas.shift();
           const height = canvas.shift();
@@ -51,9 +52,9 @@ export default function DashBoard() {
           divWrapper.classList.add('div-wrapper')
           //make the p be every 16 blocks
           let sqHelper = 0
-    
+          
           console.log(canvas);
-  
+          
           for(let i = 0; i < height; i++){
             for(let i=0; i < width; i++){
               canvas[sqHelper] = `rgb(${canvas[sqHelper]})`;
@@ -77,11 +78,13 @@ export default function DashBoard() {
         const image = data.profilePicture;
         setPfp(image);
       }
-
+      
       displayPicCollection();
       displayProfilePicture();
       initialize = true;
+      }
     }
+    fetchData();
   }, [])
   
   return (

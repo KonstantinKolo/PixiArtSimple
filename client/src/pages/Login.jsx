@@ -4,9 +4,11 @@ import {toast} from 'react-hot-toast'
 import {useNavigate} from 'react-router-dom'
 import '../App.css'
 import { email, setEmail } from "../App";
+import Modal from 'react-modal'
 
 export default function Login() {
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false); // Added loading state
   const [data, setData] = useState({
     email:'',
     password:''
@@ -16,6 +18,8 @@ export default function Login() {
     e.preventDefault();
     const {email, password} = data
     try {
+      setLoading(true);
+
       const { data } = await axios.post(
         '/login',
         {
@@ -23,7 +27,7 @@ export default function Login() {
           password,
       })
       setEmail(data.email)
-      console.log(email);
+
       if (data.error) {
         toast.error(data.error);
       } else {
@@ -33,6 +37,8 @@ export default function Login() {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -47,6 +53,15 @@ export default function Login() {
         <p className="reg-pars"></p>
         <button className='submit-btn' type='submit'>Login</button>
       </form>
+
+      <Modal
+        isOpen={loading}
+        contentLabel="Loading Modal"
+        className="loading-modal"
+        overlayClassName="loading-overlay"
+      >
+        <h2>Loading...</h2>
+      </Modal>
     </div>
   )
 }
