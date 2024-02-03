@@ -77,14 +77,15 @@ const loginUser = async (req, res) => {
 }
 
 const updatePicCollection  = async(req, res) => {
-  const {canvas,email} = req.body;
-  console.log(email + '||' + canvas);
+  const {outputArr,email} = req.body;
+  console.log(email + '||' + outputArr);
   
   if(email) {
 
     const dbUser = await User.findOne({email: email});
     const update = dbUser.picCollection;
-    update[update.length] = canvas;
+    update[update.length] = outputArr;
+    console.log(update);
     
     if(update.length > 9){
       update.shift();
@@ -103,14 +104,8 @@ const getProfile = async(req, res) => {
   console.log(req.body.email);
   const email = req.body.email;
   if(email) {
-    // jwt.verify(token, process.env.JWT_SECRET, {}, async(err, user) => {
-    //   if(err) throw err;
-    // const email = user.email
-    
     const dbUser = await User.findOne({email: email});
-    // user.picCollection = dbUser.picCollection;
     return res.json(dbUser)
-    // })
   } else {
     return res.json(null);
   }
