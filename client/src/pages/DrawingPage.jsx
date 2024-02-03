@@ -14,6 +14,7 @@ import { UserContext } from '../../context/userContext';
 import {useNavigate} from 'react-router-dom'
 import {toast} from 'react-hot-toast'
 import axios from "axios";
+import { setVis } from '../components/Navbar';
 
 export let colorExp;
 export let setColorExp;
@@ -29,6 +30,7 @@ function DrawingPage() {
     takeScreenShot('screen-shot-target', 'MyImage', 'image/jpeg', '#ffffff');
   }
   const switchAccountPage = () => {
+    setVis(true);
     navigate('/dashboard')
   }
 
