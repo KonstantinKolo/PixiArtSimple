@@ -97,11 +97,11 @@ export default function DashBoard() {
     <div>
       <h1 className="dash-h1">Dashboard</h1>
       <div className="data-wrapper">
-        {!!pfp && (<img src={pfp} className="profile-pic"></img>)}
+        {!!pfp && (<img src={pfp} style={{ width: '150px', height: '150px', objectFit: 'cover' }} className="profile-pic"></img>)}
         {!!user && (<h1 className="dash-name">Welcome {user.name}!</h1>)}
       </div>
       <div id="wrapper"
-      style={{height:'100%', width:'100%', position:''}}
+      style={{ height: '100%', width: '100%', position: '' }}
       >
         <h2>Painting collection:</h2>
       </div>
