@@ -25,6 +25,9 @@ export default function DashBoard() {
     await sleep(2000);
     axios.post('/profile', {email: email}).then(({data}) => {
       console.log(data);
+      if(!data.profilePicture){
+        setPfp(profPic);
+      }
       setUserExp(data);
     })
   }
