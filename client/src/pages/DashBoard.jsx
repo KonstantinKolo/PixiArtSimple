@@ -30,7 +30,6 @@ export default function DashBoard() {
   }
   if(refreshed === true){
     updateName();
-    updatePfp();
     setRefreshed(false);
   }
 
