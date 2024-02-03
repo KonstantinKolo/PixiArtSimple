@@ -30,7 +30,7 @@ export default function Navbar() {
           </p>
           
           <nav style={{top:'0', position:'absolute', width:'100%'}}>
-            <Link style={{fontSize:'30px', fontWeight:'bold'}} to='/register' onClick={() => setRefresh(truq)}>Register </Link>
+            <Link style={{fontSize:'30px', fontWeight:'bold'}} to='/register' onClick={() => setRefresh(true)}>Register </Link>
             <a style={{cursor:'default', fontSize:'30px'}}>| </a>
             <Link style={{fontSize:'30px', fontWeight:'bold'}} to='/login' onClick={() => setRefresh(true)}>Login </Link>
             <a style={{cursor:'default', fontSize:'30px'}}>| </a>
