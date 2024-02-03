@@ -41,7 +41,6 @@ function DrawingPage() {
     e.preventDefault();
 
     getPic('screen-shot-target', 'MyImage', 'image/jpeg', '#ffffff');
-    console.log('done')
     // await axios.post('./updatePic', pic)
   }
 

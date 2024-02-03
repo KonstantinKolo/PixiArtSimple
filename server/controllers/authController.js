@@ -78,14 +78,12 @@ const loginUser = async (req, res) => {
 
 const updatePicCollection  = async(req, res) => {
   const {outputArr,email} = req.body;
-  console.log(email + '||' + outputArr);
   
   if(email) {
 
     const dbUser = await User.findOne({email: email});
     const update = dbUser.picCollection;
     update[update.length] = outputArr;
-    console.log(update);
     
     if(update.length > 9){
       update.shift();
