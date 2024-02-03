@@ -4,6 +4,7 @@ import { toast } from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
 import Modal from 'react-modal';
 
+import pfp from '../../public/profilePicture.png'
 import '../CSS/Register.css';
 import '../App.css';
 
