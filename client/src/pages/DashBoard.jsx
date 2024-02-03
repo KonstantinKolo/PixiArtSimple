@@ -24,12 +24,13 @@ export default function DashBoard() {
   const updateName = async() => {
     await sleep(2000);
     axios.post('/profile', {email: email}).then(({data}) => {
-      console.log('UPDATENAME : ' + data);
+      console.log(data);
       setUserExp(data);
     })
   }
   if(refreshed === true){
     updateName();
+    updatePfp();
     setRefreshed(false);
   }
 
