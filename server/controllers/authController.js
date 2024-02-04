@@ -99,7 +99,6 @@ const updatePicCollection  = async(req, res) => {
 
 
 const getProfile = async(req, res) => {
-  console.log(req.body.email);
   const email = req.body.email;
   if(email) {
     const dbUser = await User.findOne({email: email});
