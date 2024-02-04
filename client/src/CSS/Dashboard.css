@@ -15,7 +15,8 @@
   border: 2px solid black
 }
 .dash-name{
-  
+  margin: 0.5%;
+  max-width: 99%;
   margin-left: 20px;
-  color: navy;
+  color: white;
 }
