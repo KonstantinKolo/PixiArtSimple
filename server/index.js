@@ -9,7 +9,7 @@ const app = express();
 
 app.use(cors({
   credentials:true,
-  origin: 'https://pixiartsimple.netlify.app'
+  origin: 'https://pixiartsimple.online'
 }));
 
 // database connection
