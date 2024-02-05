@@ -3,6 +3,7 @@ import gif from '../../img/cat-welcome.gif'
 import '../Pages.css'
 import '../App.css'
 import Modal from 'react-modal'
+import { useState } from 'react'
 
 export default function Home() {
   const [width, setWidth] = useState<number>(window.innerWidth);
